@@ -6,25 +6,45 @@ import Link from 'next/link';
 
 // Import the generated Lists API from Keystone
 import { lists } from '.keystone/api';
+import { Box, Container, Divider, Heading, Text, Link as ChakraLink, Flex } from '@chakra-ui/react';
 
 // Home receives a `posts` prop from `getStaticProps` below
 export default function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
-		<div>
-			<main style={{ margin: '3rem' }}>
-				<h1>Hello World! 👋🏻 </h1>
-				<ul>
-					{/* Render each post with a link to the content page */}
-					{posts?.map((post) => (
-						<li key={post.id}>
-							<Link href={`/post/${post.slug}`}>
-								<a>{post.title}</a>
-							</Link>
-						</li>
-					))}
-				</ul>
-			</main>
-		</div>
+		<Box as="main" m="12">
+			<Container>
+				<Flex justify="space-between" align="center" mb="8">
+					<Heading as="h1" size="2xl" mb="0">
+						zerob.dev
+					</Heading>
+					<Heading fontWeight="thin">blog</Heading>
+				</Flex>
+
+				{posts?.map((post) => (
+					<Box
+						as="article"
+						key={post.id}
+						pb="2"
+						mb="2"
+						borderBottom="1px solid transparent"
+						transition="280ms all ease-in-out"
+						_hover={{ borderColor: 'purple.200' }}
+					>
+						<Link href={`/post/${post.slug}`}>
+							<ChakraLink
+								d="block"
+								fontFamily="heading"
+								fontSize="xl"
+								transition="280ms all ease-in-out"
+								_hover={{ 'text-decoration': 'none', color: 'purple.200' }}
+							>
+								{post.title}
+							</ChakraLink>
+						</Link>
+					</Box>
+				))}
+			</Container>
+		</Box>
 	);
 }
 
