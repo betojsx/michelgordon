@@ -30,7 +30,7 @@ export default function PostPage({ post }: InferGetStaticPropsType<typeof getSta
 			<Container>
 				<div>
 					<Link href="/">
-						<a>&larr; início</a>
+						<a>&larr; home</a>
 					</Link>
 				</div>
 				<Heading mb="4" mt="8">
