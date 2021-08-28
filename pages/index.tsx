@@ -13,30 +13,33 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
 	return (
 		<Box as="main" m="12">
 			<Container>
-				<Flex justify="space-between" align="center" mb="8">
-					<Heading as="h1" size="2xl" mb="0">
+				<Flex justify="space-between" align="center" mb="12">
+					<Heading as="h1" size="2xl">
 						zerob.dev
+						<Text as="span" fontWeight="thin">
+							{' '}
+							| blog
+						</Text>
 					</Heading>
-					<Heading fontWeight="thin">blog</Heading>
 				</Flex>
 
 				{posts?.map((post) => (
 					<Box
 						as="article"
 						key={post.id}
-						pb="2"
-						mb="2"
-						borderBottom="1px solid transparent"
+						pb="4"
+						mb="4"
+						borderBottom="1px solid"
+						borderColor="gray.700"
 						transition="280ms all ease-in-out"
-						_hover={{ borderColor: 'purple.200' }}
+						_hover={{ borderColor: 'purple.200', color: 'purple.200' }}
 					>
 						<Link href={`/post/${post.slug}`}>
 							<ChakraLink
 								d="block"
 								fontFamily="heading"
 								fontSize="xl"
-								transition="280ms all ease-in-out"
-								_hover={{ 'text-decoration': 'none', color: 'purple.200' }}
+								_hover={{ 'text-decoration': 'none' }}
 							>
 								{post.title}
 							</ChakraLink>

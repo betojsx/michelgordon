@@ -3,21 +3,42 @@
 import { GetStaticPathsResult, GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import Link from 'next/link';
 import { lists } from '.keystone/api';
-import { DocumentRenderer } from '@keystone-next/document-renderer';
+import { DocumentRenderer, DocumentRendererProps } from '@keystone-next/document-renderer';
+import { Box, Container, Heading, Text } from '@chakra-ui/react';
+
+const renderers: DocumentRendererProps['renderers'] = {
+	// use your editor's autocomplete to see what other renderers you can override
+	inline: {
+		bold: ({ children }) => {
+			return <strong>{children}</strong>;
+		},
+	},
+	block: {
+		paragraph: ({ children, textAlign }) => {
+			return (
+				<Text fontSize="lg" lineHeight="tall" style={{ textAlign }}>
+					{children}
+				</Text>
+			);
+		},
+	},
+};
 
 export default function PostPage({ post }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
-		<div>
-			<main style={{ margin: '3rem' }}>
+		<Box as="main" m="12">
+			<Container>
 				<div>
 					<Link href="/">
-						<a>&larr; back home</a>
+						<a>&larr; início</a>
 					</Link>
 				</div>
-				<h1>{post.title}</h1>
-				<DocumentRenderer document={post.content.document}></DocumentRenderer>
-			</main>
-		</div>
+				<Heading mb="4" mt="8">
+					{post.title}
+				</Heading>
+				<DocumentRenderer document={post.content.document} renderers={renderers}></DocumentRenderer>
+			</Container>
+		</Box>
 	);
 }
 
