@@ -6,12 +6,14 @@ import Link from 'next/link';
 
 // Import the generated Lists API from Keystone
 import { lists } from '.keystone/api';
-import { Box, Flex, Link as ChakraLink } from '@chakra-ui/react';
+import { Box, Flex, Heading, Container, Link as ChakraLink } from '@chakra-ui/react';
 
 import dynamic from 'next/dynamic';
 
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+
+import { ReactChild, ReactChildren } from 'react';
 
 const SLIDERS = [
 	{
@@ -55,6 +57,16 @@ const responsive = {
 		slidesToSlide: 1, // optional, default to 1.
 	},
 };
+
+interface NxCkLinkProps {
+	href: string;
+	children: ReactChild;
+}
+const NxCkLink = ({ href, children }: NxCkLinkProps) => (
+	<Link href={href}>
+		<ChakraLink>{children}</ChakraLink>
+	</Link>
+);
 //@ts-ignore
 const Slider = (props) => {
 	return (
@@ -106,6 +118,39 @@ const Menu = () => (
 	</Flex>
 );
 
+const PhotoSection = () => (
+	<Box h="590px" pos="relative">
+		<Container pos="absolute" top="0" right="0" left="0" bottom="0" maxW="container.lg">
+			<Box pos="absolute" top="50%" transform="translateY(-50%)" w="400px" zIndex="1">
+				<Heading as="h3" size="2xl" mb="4">
+					Lorem Ipsum Dot Color Amet
+				</Heading>
+				<NxCkLink href="#">Ver Mais &rarr;</NxCkLink>
+			</Box>
+		</Container>
+		<Box
+			pos="absolute"
+			top="0"
+			right="0"
+			left="0"
+			bottom="0"
+			backgroundImage={`url('${SLIDERS[0].imageSrc}')`}
+			backgroundSize="cover"
+			pointerEvents="none"
+			_after={{
+				content: '""',
+				position: 'absolute',
+				top: 0,
+				right: 0,
+				left: 0,
+				bottom: 0,
+				background: 'linear-gradient(to right, rgb(26, 32, 44), transparent 100%)',
+				userSelect: 'none',
+			}}
+		></Box>
+	</Box>
+);
+
 // Home receives a `posts` prop from `getStaticProps` below
 export default function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
@@ -114,7 +159,8 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
 				<Slider pos="fixed" top="0" left="0" right="0" />
 				<Box pos="relative" zIndex="1">
 					<Menu />
-					<Box h="800px" bg="gray.800"></Box>
+					<Box h="200px" bg="gray.800"></Box>
+					<PhotoSection />
 				</Box>
 			</Box>
 		</div>
