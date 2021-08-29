@@ -10,6 +10,7 @@
 		"postinstall": "keystone-next postinstall"
 	},
 	"dependencies": {
+		"@brainhubeu/react-carousel": "^2.0.4",
 		"@chakra-ui/react": "^1.6.6",
 		"@emotion/react": "^11",
 		"@emotion/styled": "^11",
@@ -23,7 +24,8 @@
 		"framer-motion": "^4",
 		"next": "10.2.3",
 		"react": "17.0.2",
-		"react-dom": "17.0.2"
+		"react-dom": "17.0.2",
+		"react-multi-carousel": "^2.6.5"
 	},
 	"devDependencies": {
 		"@types/react": "17.0.19",

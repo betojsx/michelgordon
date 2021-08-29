@@ -1,3 +1,7 @@
 const { withKeystone } = require('@keystone-next/keystone/next');
 
-module.exports = withKeystone();
+module.exports = withKeystone({
+	images: {
+		domains: ['source.unsplash.com'],
+	},
+});

@@ -6,48 +6,197 @@ import Link from 'next/link';
 
 // Import the generated Lists API from Keystone
 import { lists } from '.keystone/api';
-import { Box, Container, Divider, Heading, Text, Link as ChakraLink, Flex } from '@chakra-ui/react';
+import { Box, Flex, Heading, Container, Link as ChakraLink, Text, Tag, TagLabel } from '@chakra-ui/react';
+
+import dynamic from 'next/dynamic';
+
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
+
+import React, { ReactChild, ReactChildren } from 'react';
+
+const SLIDERS = [
+	{
+		imageSrc: 'https://source.unsplash.com/9MRX_KwALE0',
+	},
+	{
+		imageSrc: 'https://source.unsplash.com/bzz1SzUeu04',
+	},
+	{
+		imageSrc: 'https://source.unsplash.com/k-fMn9RKIXU',
+	},
+];
+
+const PHOTO_SECTION = `https://source.unsplash.com/JtIK6MzVVeU`;
+//@ts-ignore
+const SliderItem = ({ imageSrc }) => (
+	<Box
+		sx={{
+			'> *': {
+				h: '100%',
+			},
+		}}
+		h="calc(100vh - 100px)"
+	>
+		<Image src={imageSrc} width={1600} height={1600} objectFit="cover" />
+	</Box>
+);
+
+const responsive = {
+	desktop: {
+		breakpoint: { max: 3000, min: 1024 },
+		items: 1,
+		slidesToSlide: 1, // optional, default to 1.
+	},
+	tablet: {
+		breakpoint: { max: 1024, min: 576 },
+		items: 1,
+		slidesToSlide: 1, // optional, default to 1.
+	},
+	mobile: {
+		breakpoint: { max: 576, min: 0 },
+		items: 1,
+		slidesToSlide: 1, // optional, default to 1.
+	},
+};
+
+interface NxCkLinkProps {
+	href: string;
+	children: ReactChild;
+}
+const NxCkLink = ({ href, children }: NxCkLinkProps) => (
+	<Link href={href}>
+		<ChakraLink>{children}</ChakraLink>
+	</Link>
+);
+//@ts-ignore
+const Slider = (props) => {
+	return (
+		<Box {...props}>
+			<Carousel responsive={responsive}>
+				{SLIDERS.map((slideItem, index) => (
+					<SliderItem imageSrc={slideItem.imageSrc} key={`si-${index}`} />
+				))}
+			</Carousel>
+		</Box>
+	);
+};
+
+const Menu = () => (
+	<Flex bg="rgba(26, 32, 44, 0.7)" px="8" justify="space-between" align="center" h={100} shadow="sm">
+		<Box w={16} h={16} bg="gray.300" borderRadius="full" />
+		<Flex as="nav">
+			<Box mr="4">
+				<Link href="#">
+					<ChakraLink>Home</ChakraLink>
+				</Link>
+			</Box>
+			<Box mr="4">
+				<Link href="#">
+					<ChakraLink>Obras</ChakraLink>
+				</Link>
+			</Box>
+			<Box mr="4">
+				<Link href="#">
+					<ChakraLink>Educação</ChakraLink>
+				</Link>
+			</Box>
+			<Box mr="4">
+				<Link href="#">
+					<ChakraLink>Sobre</ChakraLink>
+				</Link>
+			</Box>
+			<Box mr="4">
+				<Link href="#">
+					<ChakraLink>Contato</ChakraLink>
+				</Link>
+			</Box>
+			<Box>
+				<Link href="#">
+					<ChakraLink>Blog</ChakraLink>
+				</Link>
+			</Box>
+		</Flex>
+	</Flex>
+);
+
+const TextTagSection = () => (
+	<Box h="340px" bg="whitesmoke" pt="12">
+		<Container maxW="container.lg">
+			<Text fontSize="3xl" color="gray.800" textAlign="center">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua.
+			</Text>
+			<Flex wrap="wrap" px="40" justify="center" mt="4">
+				<Tag m="2" size="lg" borderRadius="full" variant="outline" colorScheme="blackAlpha">
+					<TagLabel>Long Tail Tag</TagLabel>
+				</Tag>
+				<Tag m="2" size="lg" borderRadius="full" variant="outline" colorScheme="blackAlpha">
+					<TagLabel>Simple Tag</TagLabel>
+				</Tag>
+				<Tag m="2" size="lg" borderRadius="full" variant="outline" colorScheme="blackAlpha">
+					<TagLabel>Simple Tag</TagLabel>
+				</Tag>
+				<Tag m="2" size="lg" borderRadius="full" variant="outline" colorScheme="blackAlpha">
+					<TagLabel>One More Tag</TagLabel>
+				</Tag>
+				<Tag m="2" size="lg" borderRadius="full" variant="outline" colorScheme="blackAlpha">
+					<TagLabel>Lorem Ipsum Dot</TagLabel>
+				</Tag>
+				<Tag m="2" size="lg" borderRadius="full" variant="outline" colorScheme="blackAlpha">
+					<TagLabel>Amet Zerat</TagLabel>
+				</Tag>
+			</Flex>
+		</Container>
+	</Box>
+);
+
+const PhotoSection = () => (
+	<Box h="590px" pos="relative">
+		<Container pos="absolute" top="0" right="0" left="0" bottom="0" maxW="container.lg">
+			<Box pos="absolute" top="50%" transform="translateY(-50%)" w="400px" zIndex="1">
+				<Heading as="h3" size="2xl" mb="4">
+					Lorem Ipsum Dot Color Amet
+				</Heading>
+				<NxCkLink href="#">Ver Mais &rarr;</NxCkLink>
+			</Box>
+		</Container>
+		<Box
+			pos="absolute"
+			top="0"
+			right="0"
+			left="0"
+			bottom="0"
+			backgroundImage={`url('${PHOTO_SECTION}')`}
+			backgroundSize="cover"
+			pointerEvents="none"
+			_after={{
+				content: '""',
+				position: 'absolute',
+				top: 0,
+				right: 0,
+				left: 0,
+				bottom: 0,
+				background: 'linear-gradient(to right, rgb(26, 32, 44), transparent 100%)',
+				userSelect: 'none',
+			}}
+		></Box>
+	</Box>
+);
 
 // Home receives a `posts` prop from `getStaticProps` below
 export default function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
-		<Box as="main" m="12">
-			<Container>
-				<Flex justify="space-between" align="center" mb="12">
-					<Heading as="h1" size="2xl">
-						zerob.dev
-						<Text as="span" fontWeight="thin">
-							{' '}
-							| blog
-						</Text>
-					</Heading>
-				</Flex>
-
-				{posts?.map((post) => (
-					<Box
-						as="article"
-						key={post.id}
-						pb="4"
-						mb="4"
-						borderBottom="1px solid"
-						borderColor="gray.700"
-						transition="280ms all ease-in-out"
-						_hover={{ borderColor: 'purple.200', color: 'purple.200' }}
-					>
-						<Link href={`/post/${post.slug}`}>
-							<ChakraLink
-								d="block"
-								fontFamily="heading"
-								fontSize="xl"
-								_hover={{ 'text-decoration': 'none' }}
-							>
-								{post.title}
-							</ChakraLink>
-						</Link>
-					</Box>
-				))}
-			</Container>
-		</Box>
+		<div>
+			<Box pt="calc(100vh - 100px)">
+				<Slider pos="fixed" top="0" left="0" right="0" />
+				<Box pos="relative" zIndex="1">
+					<Menu />
+					<TextTagSection />
+					<PhotoSection />
+				</Box>
+			</Box>
+		</div>
 	);
 }
 
