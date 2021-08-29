@@ -6,14 +6,14 @@ import Link from 'next/link';
 
 // Import the generated Lists API from Keystone
 import { lists } from '.keystone/api';
-import { Box, Flex, Heading, Container, Link as ChakraLink } from '@chakra-ui/react';
+import { Box, Flex, Heading, Container, Link as ChakraLink, Text, Tag, TagLabel } from '@chakra-ui/react';
 
 import dynamic from 'next/dynamic';
 
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
-import { ReactChild, ReactChildren } from 'react';
+import React, { ReactChild, ReactChildren } from 'react';
 
 const SLIDERS = [
 	{
@@ -26,6 +26,8 @@ const SLIDERS = [
 		imageSrc: 'https://source.unsplash.com/k-fMn9RKIXU',
 	},
 ];
+
+const PHOTO_SECTION = `https://source.unsplash.com/JtIK6MzVVeU`;
 //@ts-ignore
 const SliderItem = ({ imageSrc }) => (
 	<Box
@@ -118,6 +120,37 @@ const Menu = () => (
 	</Flex>
 );
 
+const TextTagSection = () => (
+	<Box h="340px" bg="whitesmoke" pt="12">
+		<Container maxW="container.lg">
+			<Text fontSize="3xl" color="gray.800" textAlign="center">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+				dolore magna aliqua.
+			</Text>
+			<Flex wrap="wrap" px="40" justify="center" mt="4">
+				<Tag m="2" size="lg" borderRadius="full" variant="outline" colorScheme="blackAlpha">
+					<TagLabel>Long Tail Tag</TagLabel>
+				</Tag>
+				<Tag m="2" size="lg" borderRadius="full" variant="outline" colorScheme="blackAlpha">
+					<TagLabel>Simple Tag</TagLabel>
+				</Tag>
+				<Tag m="2" size="lg" borderRadius="full" variant="outline" colorScheme="blackAlpha">
+					<TagLabel>Simple Tag</TagLabel>
+				</Tag>
+				<Tag m="2" size="lg" borderRadius="full" variant="outline" colorScheme="blackAlpha">
+					<TagLabel>One More Tag</TagLabel>
+				</Tag>
+				<Tag m="2" size="lg" borderRadius="full" variant="outline" colorScheme="blackAlpha">
+					<TagLabel>Lorem Ipsum Dot</TagLabel>
+				</Tag>
+				<Tag m="2" size="lg" borderRadius="full" variant="outline" colorScheme="blackAlpha">
+					<TagLabel>Amet Zerat</TagLabel>
+				</Tag>
+			</Flex>
+		</Container>
+	</Box>
+);
+
 const PhotoSection = () => (
 	<Box h="590px" pos="relative">
 		<Container pos="absolute" top="0" right="0" left="0" bottom="0" maxW="container.lg">
@@ -134,7 +167,7 @@ const PhotoSection = () => (
 			right="0"
 			left="0"
 			bottom="0"
-			backgroundImage={`url('${SLIDERS[0].imageSrc}')`}
+			backgroundImage={`url('${PHOTO_SECTION}')`}
 			backgroundSize="cover"
 			pointerEvents="none"
 			_after={{
@@ -159,7 +192,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
 				<Slider pos="fixed" top="0" left="0" right="0" />
 				<Box pos="relative" zIndex="1">
 					<Menu />
-					<Box h="200px" bg="gray.800"></Box>
+					<TextTagSection />
 					<PhotoSection />
 				</Box>
 			</Box>
