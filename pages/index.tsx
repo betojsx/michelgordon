@@ -164,7 +164,7 @@ const Menu = () => {
 };
 
 const TextTagSection = () => (
-	<Box h="340px" bg="whitesmoke" pt="12">
+	<Box bg="whitesmoke" py="12">
 		<Container maxW="container.lg">
 			<Text fontSize="4xl" fontWeight="bold" lineHeight="10" color="mg.primary" textAlign="center">
 				Espaço colaborativo para os admiradores <br />
@@ -253,10 +253,10 @@ const PhotoSection = () => (
 			flexWrap="wrap"
 			alignItems="center"
 			alignContent="center"
-			px="4"
+			px="4%"
 			pos="relative"
 			zIndex="1"
-			maxW="530px"
+			maxW="40%"
 			h="100%"
 			bg="mg.primaryAlpha60"
 		>
