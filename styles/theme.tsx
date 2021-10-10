@@ -10,6 +10,8 @@ export default extendTheme({
 		mg: {
 			primary: '#421903',
 			secondary: '#C8834E',
+
+			primaryAlpha60: 'rgba(66, 25, 3, 0.6)',
 		},
 	},
 });

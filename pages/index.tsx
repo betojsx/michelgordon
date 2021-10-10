@@ -69,6 +69,8 @@ const NxCkLink = ({ href, children }: NxCkLinkProps) => (
 	</Link>
 );
 
+const TagSection = () => {};
+
 const LogoSymbol = () => (
 	<Box pos="absolute" top="20px" left="20px" zIndex="1">
 		<Image src="/logo_symbol.png" width="70" height="72" />
@@ -164,9 +166,9 @@ const Menu = () => {
 const TextTagSection = () => (
 	<Box h="340px" bg="whitesmoke" pt="12">
 		<Container maxW="container.lg">
-			<Text fontSize="3xl" color="gray.800" textAlign="center">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-				dolore magna aliqua.
+			<Text fontSize="4xl" fontWeight="bold" lineHeight="10" color="mg.primary" textAlign="center">
+				Espaço colaborativo para os admiradores <br />
+				do Oriente Médio
 			</Text>
 			<Flex wrap="wrap" px="40" justify="center" mt="4">
 				<Tag m="2" size="lg" borderRadius="full" variant="outline" colorScheme="blackAlpha">
@@ -194,22 +196,33 @@ const TextTagSection = () => (
 
 const PhotoSection = () => (
 	<Box h="590px" pos="relative">
-		<Container pos="absolute" top="0" right="0" left="0" bottom="0" maxW="container.lg">
-			<Box pos="absolute" top="50%" transform="translateY(-50%)" w="400px" zIndex="1">
-				<Heading as="h3" size="2xl" mb="4">
-					Lorem Ipsum Dot Color Amet
-				</Heading>
-				<NxCkLink href="#">Ver Mais &rarr;</NxCkLink>
-			</Box>
-		</Container>
+		<Box
+			d="flex"
+			flexWrap="wrap"
+			alignItems="center"
+			alignContent="center"
+			px="4"
+			pos="relative"
+			zIndex="1"
+			maxW="530px"
+			h="100%"
+			bg="mg.primaryAlpha60"
+		>
+			<Heading as="h3" size="2xl" mb="4">
+				Lorem Ipsum Dot Color Amet
+			</Heading>
+			<NxCkLink href="#">Ver Mais &rarr;</NxCkLink>
+		</Box>
 		<Box
 			pos="absolute"
 			top="0"
 			right="0"
 			left="0"
 			bottom="0"
-			backgroundImage={`url('${PHOTO_SECTION}')`}
-			backgroundSize="cover"
+			bgImage="url('/photo_section_mock.png')"
+			bgSize="cover"
+			bgRepeat="no-repeat"
+			bgPos="center"
 			pointerEvents="none"
 			_after={{
 				content: '""',
