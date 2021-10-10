@@ -121,7 +121,7 @@ const Menu = () => {
 
 		const handleScroll = () => {
 			const windowTop = window.pageYOffset;
-			console.log(headerTop, windowTop);
+
 			if (windowTop >= headerTop) {
 				setIsSticky(true);
 				document.body.style.paddingTop = `${headerHeight}px`;
@@ -148,11 +148,12 @@ const Menu = () => {
 			top="0"
 			left="0"
 			right="0"
+			zIndex="2"
 		>
 			<Image src="/logo_michael_gordon.png" width="268" height="59" />
 			<Flex as="nav">
-				{menuItems.map(({ label }) => (
-					<Box ml="6">
+				{menuItems.map(({ label }, index) => (
+					<Box ml="6" key={label}>
 						<Link href="#">
 							<ChakraLink textTransform="uppercase">{label}</ChakraLink>
 						</Link>
@@ -304,6 +305,67 @@ const OtherResourcesSection = () => {
 	);
 };
 
+const YoutubeSection = () => (
+	<Box py="12" bg="linear-gradient(to bottom, #F2F2F2 70%, white 70%)">
+		<Container maxW="container.lg">
+			<Text fontSize="4xl" fontWeight="bold" lineHeight="10" color="mg.primary" textAlign="center" mb="6">
+				Acompanhe nossos conteúdos no YouTube
+			</Text>
+			<Image src="/youtube_mockup.jpg" width="1080px" height="611px" />
+		</Container>
+	</Box>
+);
+
+const INSTAGRAM_SLIDER = [
+	{
+		url: '/instagram_1.jpg',
+	},
+	{
+		url: '/instagram_2.jpg',
+	},
+	{
+		url: '/instagram_3.jpg',
+	},
+	{
+		url: '/instagram_4.jpg',
+	},
+	{
+		url: '/instagram_5.jpg',
+	},
+];
+const IGCarouselConfig = {
+	desktop: {
+		breakpoint: { max: 3000, min: 1024 },
+		items: 4,
+		partialVisibilityGutter: 20,
+		slidesToSlide: 1, // optional, default to 1.
+	},
+	tablet: {
+		breakpoint: { max: 1024, min: 576 },
+		items: 3,
+		partialVisibilityGutter: 20,
+		slidesToSlide: 1, // optional, default to 1.
+	},
+	mobile: {
+		breakpoint: { max: 576, min: 0 },
+		items: 1,
+		slidesToSlide: 1, // optional, default to 1.
+	},
+};
+const InstagramSection = () => (
+	<Box py="12" bg="linear-gradient(to bottom, #F2F2F2 70%, white 70%)">
+		<Container maxW="container.lg">
+			<Text fontSize="4xl" fontWeight="bold" lineHeight="10" color="mg.primary" textAlign="center" mb="6">
+				Últimas postagens do Instagram
+			</Text>
+		</Container>
+		<Carousel partialVisbile={true} responsive={IGCarouselConfig}>
+			{INSTAGRAM_SLIDER.map((item) => (
+				<Image src={item.url} width="330px" height="330px" />
+			))}
+		</Carousel>
+	</Box>
+);
 // Home receives a `posts` prop from `getStaticProps` below
 export default function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
@@ -315,6 +377,8 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
 					<TextTagSection />
 					<PhotoSection />
 					<OtherResourcesSection />
+					<YoutubeSection />
+					<InstagramSection />
 				</Box>
 			</Box>
 		</div>
