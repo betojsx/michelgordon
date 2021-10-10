@@ -1,3 +1,4 @@
+import React, { forwardRef, ReactChild, ReactChildren, useCallback, useEffect, useRef, useState } from 'react';
 import type { NextPage } from 'next';
 import { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
@@ -12,8 +13,6 @@ import dynamic from 'next/dynamic';
 
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-
-import React, { ReactChild, ReactChildren } from 'react';
 
 const SLIDERS = [
 	{
@@ -82,43 +81,78 @@ const Slider = (props) => {
 	);
 };
 
-const Menu = () => (
-	<Flex bg="rgba(26, 32, 44, 0.7)" px="8" justify="space-between" align="center" h={100} shadow="sm">
-		<Box w={16} h={16} bg="gray.300" borderRadius="full" />
-		<Flex as="nav">
-			<Box mr="4">
-				<Link href="#">
-					<ChakraLink>Home</ChakraLink>
-				</Link>
-			</Box>
-			<Box mr="4">
-				<Link href="#">
-					<ChakraLink>Obras</ChakraLink>
-				</Link>
-			</Box>
-			<Box mr="4">
-				<Link href="#">
-					<ChakraLink>Educação</ChakraLink>
-				</Link>
-			</Box>
-			<Box mr="4">
-				<Link href="#">
-					<ChakraLink>Sobre</ChakraLink>
-				</Link>
-			</Box>
-			<Box mr="4">
-				<Link href="#">
-					<ChakraLink>Contato</ChakraLink>
-				</Link>
-			</Box>
-			<Box>
-				<Link href="#">
-					<ChakraLink>Blog</ChakraLink>
-				</Link>
-			</Box>
+const menuItems = [
+	{
+		label: 'Home',
+	},
+	{
+		label: 'Obras',
+	},
+	{
+		label: 'Educação',
+	},
+	{
+		label: 'Sobre',
+	},
+	{
+		label: 'Contato',
+	},
+	{
+		label: 'Blog',
+	},
+];
+const Menu = () => {
+	const [isSticky, setIsSticky] = useState(false);
+	const headerRef = useRef<HTMLDivElement | null>(null);
+
+	useEffect(() => {
+		// @ts-ignore
+		const headerTop = headerRef.current.getBoundingClientRect().top + window.pageYOffset;
+		const headerHeight = headerRef.current?.getBoundingClientRect().height;
+
+		const handleScroll = () => {
+			const windowTop = window.pageYOffset;
+			console.log(headerTop, windowTop);
+			if (windowTop >= headerTop) {
+				setIsSticky(true);
+				document.body.style.paddingTop = `${headerHeight}px`;
+			} else {
+				document.body.style.paddingTop = '0';
+				setIsSticky(false);
+			}
+		};
+		window.addEventListener('scroll', handleScroll);
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
+	}, []);
+	return (
+		<Flex
+			ref={headerRef}
+			bg="mg.primary"
+			px="10"
+			justify="space-between"
+			align="center"
+			h={100}
+			shadow="sm"
+			pos={isSticky ? 'fixed' : 'static'}
+			top="0"
+			left="0"
+			right="0"
+		>
+			<Image src="/logo_michael_gordon.png" width="268" height="59" />
+			<Flex as="nav">
+				{menuItems.map(({ label }) => (
+					<Box ml="6">
+						<Link href="#">
+							<ChakraLink textTransform="uppercase">{label}</ChakraLink>
+						</Link>
+					</Box>
+				))}
+			</Flex>
 		</Flex>
-	</Flex>
-);
+	);
+};
 
 const TextTagSection = () => (
 	<Box h="340px" bg="whitesmoke" pt="12">
