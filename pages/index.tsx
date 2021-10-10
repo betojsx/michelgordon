@@ -68,10 +68,17 @@ const NxCkLink = ({ href, children }: NxCkLinkProps) => (
 		<ChakraLink>{children}</ChakraLink>
 	</Link>
 );
+
+const LogoSymbol = () => (
+	<Box pos="absolute" top="20px" left="20px" zIndex="1">
+		<Image src="/logo_symbol.png" width="70" height="72" />
+	</Box>
+);
 //@ts-ignore
 const Slider = (props) => {
 	return (
-		<Box {...props}>
+		<Box pos="relative" {...props}>
+			<LogoSymbol />
 			<Carousel responsive={responsive}>
 				{SLIDERS.map((slideItem, index) => (
 					<SliderItem imageSrc={slideItem.imageSrc} key={`si-${index}`} />
