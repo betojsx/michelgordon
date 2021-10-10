@@ -16,7 +16,7 @@ import 'react-multi-carousel/lib/styles.css';
 
 const SLIDERS = [
 	{
-		imageSrc: 'https://source.unsplash.com/9MRX_KwALE0',
+		imageSrc: '/hero_mockup.jpg',
 	},
 	{
 		imageSrc: 'https://source.unsplash.com/bzz1SzUeu04',
