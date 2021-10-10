@@ -62,10 +62,11 @@ const responsive = {
 interface NxCkLinkProps {
 	href: string;
 	children: ReactChild;
+	[propName: string]: any;
 }
-const NxCkLink = ({ href, children }: NxCkLinkProps) => (
+const NxCkLink = ({ href, children, ...props }: NxCkLinkProps) => (
 	<Link href={href}>
-		<ChakraLink>{children}</ChakraLink>
+		<ChakraLink {...props}>{children}</ChakraLink>
 	</Link>
 );
 
@@ -353,17 +354,59 @@ const IGCarouselConfig = {
 	},
 };
 const InstagramSection = () => (
-	<Box py="12" bg="linear-gradient(to bottom, #F2F2F2 70%, white 70%)">
+	<Box pt="12" bg="white" mb="-2">
 		<Container maxW="container.lg">
 			<Text fontSize="4xl" fontWeight="bold" lineHeight="10" color="mg.primary" textAlign="center" mb="6">
 				Últimas postagens do Instagram
 			</Text>
 		</Container>
-		<Carousel partialVisbile={true} responsive={IGCarouselConfig}>
-			{INSTAGRAM_SLIDER.map((item) => (
-				<Image src={item.url} width="330px" height="330px" />
+		<Carousel partialVisible={true} responsive={IGCarouselConfig}>
+			{INSTAGRAM_SLIDER.map((item, index) => (
+				<Image key={index} src={item.url} width="330px" height="330px" />
 			))}
 		</Carousel>
+	</Box>
+);
+
+const Footer = () => (
+	<Box>
+		<Box bg="mg.primary" py="12">
+			<Container maxW="container.lg">
+				<Flex align="center">
+					<Box mr="10">
+						<Image src="/symbol_alternate.png" width="215px" height="215px"></Image>
+					</Box>
+					<Box mr="10">
+						<NxCkLink href="#" fontSize="lg" mb="4" d="block">
+							Leve uma obra e decore seu ambiente
+						</NxCkLink>
+						<NxCkLink href="#" fontSize="lg" mb="4" d="block">
+							Leia mais sobre o Oriente Médio
+						</NxCkLink>
+						<NxCkLink href="#" fontSize="lg" mb="4" d="block">
+							Participe da próxima aula
+						</NxCkLink>
+					</Box>
+					<Box mr="10">
+						<NxCkLink href="#" fontSize="lg" mb="4" d="block">
+							Apoie o Centro (doe qualquer valor)
+						</NxCkLink>
+						<NxCkLink href="#" fontSize="lg" mb="4" d="block">
+							Anuncie seu produto conosco
+						</NxCkLink>
+						<NxCkLink href="#" fontSize="lg" mb="4" d="block">
+							Se inscreva em nosso canal no YouTube
+						</NxCkLink>
+					</Box>
+				</Flex>
+			</Container>
+		</Box>
+		<Box bg="mg.secondary" py="5">
+			<Flex align="center" justify="center">
+				<Text mr="3">Designed by</Text> <Image src="/mybuu.png" width="88px" height="27px" />{' '}
+				<Text ml="4"> | Todos os direitos reservados</Text>.
+			</Flex>
+		</Box>
 	</Box>
 );
 // Home receives a `posts` prop from `getStaticProps` below
@@ -379,6 +422,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
 					<OtherResourcesSection />
 					<YoutubeSection />
 					<InstagramSection />
+					<Footer />
 				</Box>
 			</Box>
 		</div>
