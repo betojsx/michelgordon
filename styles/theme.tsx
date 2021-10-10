@@ -6,4 +6,10 @@ export default extendTheme({
 		heading: 'Poppins, system-ui, sans-serif',
 		mono: 'Menlo, monospace',
 	},
+	colors: {
+		mg: {
+			primary: '#421903',
+			secondary: '#C8834E',
+		},
+	},
 });
