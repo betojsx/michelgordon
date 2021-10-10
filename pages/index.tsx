@@ -194,6 +194,58 @@ const TextTagSection = () => (
 	</Box>
 );
 
+//@ts-ignore
+const BlockAnchor = ({ title, image, ...props }) => (
+	<Flex
+		align="center"
+		justify="center"
+		pos="relative"
+		w="574px"
+		h="574px"
+		_hover={{
+			'& img': {
+				transform: 'scale(1.1) rotate(2deg)',
+			},
+		}}
+		sx={{
+			'& img ': {
+				transition: 'all 420ms ease',
+			},
+		}}
+		{...props}
+	>
+		<Box maxW="240px" pos="relative" zIndex="1">
+			<Text fontSize="4xl" fontWeight="bold" lineHeight="10" color="white" textAlign="center">
+				{title}
+			</Text>
+		</Box>
+		<Box
+			pos="absolute"
+			left="0"
+			right="0"
+			top="0"
+			bottom="0"
+			_hover={{
+				_after: {
+					bg: 'mg.secondaryAlpha60',
+				},
+			}}
+			_after={{
+				content: '""',
+				position: 'absolute',
+				top: '0',
+				right: '0',
+				bottom: '0',
+				left: '0',
+				bg: 'mg.primaryAlpha60',
+				transition: 'all 420ms ease',
+			}}
+		>
+			<Image src={image} layout="fill" />
+		</Box>
+	</Flex>
+);
+
 const PhotoSection = () => (
 	<Box h="590px" pos="relative">
 		<Box
@@ -221,6 +273,7 @@ const PhotoSection = () => (
 			bottom="0"
 			bgImage="url('/photo_section_mock.png')"
 			bgSize="cover"
+			bgAttachment="fixed"
 			bgRepeat="no-repeat"
 			bgPos="center"
 			pointerEvents="none"
@@ -238,6 +291,19 @@ const PhotoSection = () => (
 	</Box>
 );
 
+const OtherResourcesSection = () => {
+	return (
+		<Box py="12" bg="white">
+			<Container maxW="container.lg">
+				<Flex>
+					<BlockAnchor title="Conheça os Livros" image="/book_mockup.jpg" mr="4" />
+					<BlockAnchor title="Participe das Aulas" image="/classes_mockup.jpg" />
+				</Flex>
+			</Container>
+		</Box>
+	);
+};
+
 // Home receives a `posts` prop from `getStaticProps` below
 export default function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
@@ -248,6 +314,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
 					<Menu />
 					<TextTagSection />
 					<PhotoSection />
+					<OtherResourcesSection />
 				</Box>
 			</Box>
 		</div>
