@@ -156,7 +156,9 @@ const Menu = () => {
 				{menuItems.map(({ label }, index) => (
 					<Box ml="6" key={label}>
 						<Link href="#">
-							<ChakraLink textTransform="uppercase">{label}</ChakraLink>
+							<ChakraLink textTransform="uppercase" color="white">
+								{label}
+							</ChakraLink>
 						</Link>
 					</Box>
 				))}
@@ -262,7 +264,7 @@ const PhotoSection = () => (
 			h="100%"
 			bg="mg.primaryAlpha60"
 		>
-			<Heading as="h3" size="2xl" mb="4">
+			<Heading as="h3" size="2xl" mb="4" color="white">
 				Lorem Ipsum Dot Color Amet
 			</Heading>
 			<NxCkLink href="#">Ver Mais &rarr;</NxCkLink>
@@ -377,24 +379,24 @@ const Footer = () => (
 						<Image src="/symbol_alternate.png" width="215px" height="215px"></Image>
 					</Box>
 					<Box mr="10">
-						<NxCkLink href="#" fontSize="lg" mb="4" d="block">
+						<NxCkLink href="#" fontSize="lg" mb="4" d="block" color="white">
 							Leve uma obra e decore seu ambiente
 						</NxCkLink>
-						<NxCkLink href="#" fontSize="lg" mb="4" d="block">
+						<NxCkLink href="#" fontSize="lg" mb="4" d="block" color="white">
 							Leia mais sobre o Oriente Médio
 						</NxCkLink>
-						<NxCkLink href="#" fontSize="lg" mb="4" d="block">
+						<NxCkLink href="#" fontSize="lg" mb="4" d="block" color="white">
 							Participe da próxima aula
 						</NxCkLink>
 					</Box>
 					<Box mr="10">
-						<NxCkLink href="#" fontSize="lg" mb="4" d="block">
+						<NxCkLink href="#" fontSize="lg" mb="4" d="block" color="white">
 							Apoie o Centro (doe qualquer valor)
 						</NxCkLink>
-						<NxCkLink href="#" fontSize="lg" mb="4" d="block">
+						<NxCkLink href="#" fontSize="lg" mb="4" d="block" color="white">
 							Anuncie seu produto conosco
 						</NxCkLink>
-						<NxCkLink href="#" fontSize="lg" mb="4" d="block">
+						<NxCkLink href="#" fontSize="lg" mb="4" d="block" color="white">
 							Se inscreva em nosso canal no YouTube
 						</NxCkLink>
 					</Box>
