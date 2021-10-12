@@ -5,21 +5,27 @@ import { Box, Flex, Link as ChakraLink } from '@chakra-ui/react';
 const menuItems = [
 	{
 		label: 'Home',
+		url: '/',
 	},
 	{
 		label: 'Obras',
+		url: '/works',
 	},
 	{
 		label: 'Educação',
+		url: '#',
 	},
 	{
 		label: 'Sobre',
+		url: '#',
 	},
 	{
 		label: 'Contato',
+		url: '#',
 	},
 	{
 		label: 'Blog',
+		url: '#',
 	},
 ];
 const Menu = () => {
@@ -64,9 +70,9 @@ const Menu = () => {
 		>
 			<Image src="/logo_michael_gordon.png" width="268" height="59" />
 			<Flex as="nav">
-				{menuItems.map(({ label }, index) => (
+				{menuItems.map(({ label, url }, index) => (
 					<Box ml="6" key={label}>
-						<Link href="#">
+						<Link href={url}>
 							<ChakraLink textTransform="uppercase" color="white">
 								{label}
 							</ChakraLink>
