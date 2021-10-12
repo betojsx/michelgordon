@@ -13,6 +13,7 @@ import dynamic from 'next/dynamic';
 
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import Menu from '../components/Menu';
 
 const SLIDERS = [
 	{
@@ -88,82 +89,6 @@ const Slider = (props) => {
 				))}
 			</Carousel>
 		</Box>
-	);
-};
-
-const menuItems = [
-	{
-		label: 'Home',
-	},
-	{
-		label: 'Obras',
-	},
-	{
-		label: 'Educação',
-	},
-	{
-		label: 'Sobre',
-	},
-	{
-		label: 'Contato',
-	},
-	{
-		label: 'Blog',
-	},
-];
-const Menu = () => {
-	const [isSticky, setIsSticky] = useState(false);
-	const headerRef = useRef<HTMLDivElement | null>(null);
-
-	useEffect(() => {
-		// @ts-ignore
-		const headerTop = headerRef.current.getBoundingClientRect().top + window.pageYOffset;
-		const headerHeight = headerRef.current?.getBoundingClientRect().height;
-
-		const handleScroll = () => {
-			const windowTop = window.pageYOffset;
-
-			if (windowTop >= headerTop) {
-				setIsSticky(true);
-				document.body.style.paddingTop = `${headerHeight}px`;
-			} else {
-				document.body.style.paddingTop = '0';
-				setIsSticky(false);
-			}
-		};
-		window.addEventListener('scroll', handleScroll);
-		return () => {
-			window.removeEventListener('scroll', handleScroll);
-		};
-	}, []);
-	return (
-		<Flex
-			ref={headerRef}
-			bg="mg.primary"
-			px="10"
-			justify="space-between"
-			align="center"
-			h={100}
-			shadow="sm"
-			pos={isSticky ? 'fixed' : 'static'}
-			top="0"
-			left="0"
-			right="0"
-			zIndex="2"
-		>
-			<Image src="/logo_michael_gordon.png" width="268" height="59" />
-			<Flex as="nav">
-				{menuItems.map(({ label }, index) => (
-					<Box ml="6" key={label}>
-						<Link href="#">
-							<ChakraLink textTransform="uppercase" color="white">
-								{label}
-							</ChakraLink>
-						</Link>
-					</Box>
-				))}
-			</Flex>
-		</Flex>
 	);
 };
 
