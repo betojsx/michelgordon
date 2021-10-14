@@ -14,6 +14,8 @@ import dynamic from 'next/dynamic';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import Menu from '../components/Menu';
+import NxCkLink from '../components/_atoms/Link';
+import Footer from '../components/Footer';
 
 const SLIDERS = [
 	{
@@ -59,17 +61,6 @@ const responsive = {
 		slidesToSlide: 1, // optional, default to 1.
 	},
 };
-
-interface NxCkLinkProps {
-	href: string;
-	children: ReactChild;
-	[propName: string]: any;
-}
-const NxCkLink = ({ href, children, ...props }: NxCkLinkProps) => (
-	<Link href={href}>
-		<ChakraLink {...props}>{children}</ChakraLink>
-	</Link>
-);
 
 const TagSection = () => {};
 
@@ -295,47 +286,6 @@ const InstagramSection = () => (
 	</Box>
 );
 
-const Footer = () => (
-	<Box>
-		<Box bg="mg.primary" py="12">
-			<Container maxW="container.lg">
-				<Flex align="center">
-					<Box mr="10">
-						<Image src="/symbol_alternate.png" width="215px" height="215px"></Image>
-					</Box>
-					<Box mr="10">
-						<NxCkLink href="#" fontSize="lg" mb="4" d="block" color="white">
-							Leve uma obra e decore seu ambiente
-						</NxCkLink>
-						<NxCkLink href="#" fontSize="lg" mb="4" d="block" color="white">
-							Leia mais sobre o Oriente Médio
-						</NxCkLink>
-						<NxCkLink href="#" fontSize="lg" mb="4" d="block" color="white">
-							Participe da próxima aula
-						</NxCkLink>
-					</Box>
-					<Box mr="10">
-						<NxCkLink href="#" fontSize="lg" mb="4" d="block" color="white">
-							Apoie o Centro (doe qualquer valor)
-						</NxCkLink>
-						<NxCkLink href="#" fontSize="lg" mb="4" d="block" color="white">
-							Anuncie seu produto conosco
-						</NxCkLink>
-						<NxCkLink href="#" fontSize="lg" mb="4" d="block" color="white">
-							Se inscreva em nosso canal no YouTube
-						</NxCkLink>
-					</Box>
-				</Flex>
-			</Container>
-		</Box>
-		<Box bg="mg.secondary" py="5">
-			<Flex align="center" justify="center">
-				<Text mr="3">Designed by</Text> <Image src="/mybuu.png" width="88px" height="27px" />{' '}
-				<Text ml="4"> | Todos os direitos reservados</Text>.
-			</Flex>
-		</Box>
-	</Box>
-);
 // Home receives a `posts` prop from `getStaticProps` below
 export default function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (

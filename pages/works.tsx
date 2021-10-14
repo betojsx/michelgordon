@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Box, Button, Flex, Heading, Text } from '@chakra-ui/react';
 import Menu from '../components/Menu';
+import Footer from '../components/Footer';
 const Headline = () => (
 	<Flex py="12" minH="380" align="center" justify="center" bg="white">
 		<Heading size="2xl" maxW="container.md" color="mg.primary" textAlign="center">
@@ -85,7 +86,7 @@ const HowToBuy = () => (
 		<Heading size="xl" maxW="460px" color="mg.primary" textAlign="center" mb="8">
 			Como Ter Uma Obra Para Chamar de Sua
 		</Heading>
-		<Flex justify="space-between" align="flex-start" maxW="container.lg" my="10">
+		<Flex justify="space-between" align="flex-start" px="12" my="10">
 			{STEPS.map((step, index) => (
 				<Box maxW="33%" textAlign="center" key={index}>
 					<Image src={step.image} width="160px" height="auto" />
@@ -119,6 +120,7 @@ export default function Works() {
 				image="/painting_mockup.png"
 			/>
 			<HowToBuy />
+			<Footer />
 		</Box>
 	);
 }
