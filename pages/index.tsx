@@ -6,7 +6,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 // Import the generated Lists API from Keystone
-import { lists } from '.keystone/api';
 import { Box, Flex, Heading, Container, Link as ChakraLink, Text, Tag, TagLabel } from '@chakra-ui/react';
 
 import dynamic from 'next/dynamic';
@@ -288,7 +287,7 @@ const InstagramSection = () => (
 );
 
 // Home receives a `posts` prop from `getStaticProps` below
-export default function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Home() {
 	return (
 		<BoxContainer>
 			<Box pt="calc(100vh - 100px)">
@@ -305,11 +304,4 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
 			</Box>
 		</BoxContainer>
 	);
-}
-
-// Here we use the Lists API to load all the posts we want to display
-// The return of this function is provided to the `Home` component
-export async function getStaticProps() {
-	const posts = await lists.Post.findMany({ query: 'id title slug' });
-	return { props: { posts } };
 }
