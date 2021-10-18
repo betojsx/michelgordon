@@ -67,6 +67,8 @@ const Menu = () => {
 			left="0"
 			right="0"
 			zIndex="2"
+			maxW="1440px"
+			mx="auto"
 		>
 			<Image src="/logo_michael_gordon.png" width="268" height="59" />
 			<Flex as="nav">

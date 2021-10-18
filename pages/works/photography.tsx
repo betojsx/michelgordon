@@ -4,6 +4,7 @@ import Menu from '../../components/Menu';
 import Image from 'next/image';
 import { chunkArray } from '../../utils';
 import Footer from '../../components/Footer';
+import BoxContainer from '../../components/_atoms/BoxContainer';
 
 const Headline = () => (
 	<Box py="12" minH="380" align="center" justify="center" bg="white" wrap="wrap">
@@ -144,11 +145,13 @@ const Collections = () => (
 
 export default function Photography() {
 	return (
-		<Box>
-			<Menu />
-			<Headline />
-			<Collections />
-			<Footer />
-		</Box>
+		<BoxContainer>
+			<Box>
+				<Menu />
+				<Headline />
+				<Collections />
+				<Footer />
+			</Box>
+		</BoxContainer>
 	);
 }

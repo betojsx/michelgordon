@@ -16,6 +16,7 @@ import 'react-multi-carousel/lib/styles.css';
 import Menu from '../components/Menu';
 import NxCkLink from '../components/_atoms/Link';
 import Footer from '../components/Footer';
+import BoxContainer from '../components/_atoms/BoxContainer';
 
 const SLIDERS = [
 	{
@@ -289,9 +290,9 @@ const InstagramSection = () => (
 // Home receives a `posts` prop from `getStaticProps` below
 export default function Home({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
-		<div>
+		<BoxContainer>
 			<Box pt="calc(100vh - 100px)">
-				<Slider pos="fixed" top="0" left="0" right="0" />
+				<Slider pos="fixed" top="0" left="0" right="0" maxW="1440px" mx="auto" />
 				<Box pos="relative" zIndex="1">
 					<Menu />
 					<TextTagSection />
@@ -302,7 +303,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
 					<Footer />
 				</Box>
 			</Box>
-		</div>
+		</BoxContainer>
 	);
 }
 

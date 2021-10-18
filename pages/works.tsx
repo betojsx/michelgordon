@@ -4,6 +4,7 @@ import { Box, Button, Flex, Heading, Text } from '@chakra-ui/react';
 import Menu from '../components/Menu';
 import Footer from '../components/Footer';
 import NxCkLink from '../components/_atoms/Link';
+import BoxContainer from '../components/_atoms/BoxContainer';
 const Headline = () => (
 	<Flex py="12" minH="380" align="center" justify="center" bg="white">
 		<Heading size="2xl" maxW="container.md" color="mg.primary" textAlign="center">
@@ -107,23 +108,25 @@ const HowToBuy = () => (
 
 export default function Works() {
 	return (
-		<Box>
-			<Menu />
-			<Headline />
-			<Banner
-				title="Fotografia"
-				text="Verdadeiras obras de arte que vão iluminar o seu espaço"
-				buttonText="fotos"
-				image="/hero_mockup.jpg"
-			/>
-			<Banner
-				title="Pinturas"
-				text="Pinturas em aquarela para decorar o seu ambiente"
-				buttonText="pinturas"
-				image="/painting_mockup.png"
-			/>
-			<HowToBuy />
-			<Footer />
-		</Box>
+		<BoxContainer>
+			<Box>
+				<Menu />
+				<Headline />
+				<Banner
+					title="Fotografia"
+					text="Verdadeiras obras de arte que vão iluminar o seu espaço"
+					buttonText="fotos"
+					image="/hero_mockup.jpg"
+				/>
+				<Banner
+					title="Pinturas"
+					text="Pinturas em aquarela para decorar o seu ambiente"
+					buttonText="pinturas"
+					image="/painting_mockup.png"
+				/>
+				<HowToBuy />
+				<Footer />
+			</Box>
+		</BoxContainer>
 	);
 }
