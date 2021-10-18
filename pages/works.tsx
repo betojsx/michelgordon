@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { Box, Button, Flex, Heading, Text } from '@chakra-ui/react';
 import Menu from '../components/Menu';
 import Footer from '../components/Footer';
+import NxCkLink from '../components/_atoms/Link';
 const Headline = () => (
 	<Flex py="12" minH="380" align="center" justify="center" bg="white">
 		<Heading size="2xl" maxW="container.md" color="mg.primary" textAlign="center">
@@ -42,7 +43,9 @@ const Banner = ({ title, text, buttonText, image }: IBannerProps) => (
 			<Text fontSize="2xl" mb="4" lineHeight="8">
 				{text}
 			</Text>
-			<Button>Clique aqui para ver todas as {buttonText}</Button>
+			<Button>
+				<NxCkLink href="/works/photography">{`Clique aqui para ver todas as ${buttonText}`}</NxCkLink>
+			</Button>
 		</Box>
 		<Box
 			pos="absolute"
