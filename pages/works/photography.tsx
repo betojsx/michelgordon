@@ -1,10 +1,11 @@
 import { Box, Flex, Heading, Tag, TagLabel, Text, Stack } from '@chakra-ui/react';
-import React from 'react';
+import React, { ReactChild, ReactChildren, useEffect, useState } from 'react';
 import Menu from '../../components/Menu';
 import Image from 'next/image';
 import { chunkArray } from '../../utils';
 import Footer from '../../components/Footer';
 import BoxContainer from '../../components/_atoms/BoxContainer';
+import { GraphQLClient } from 'graphql-request';
 
 const Headline = () => (
 	<Box py="12" minH="380" align="center" justify="center" bg="white" wrap="wrap">
@@ -110,13 +111,13 @@ const collectionArr2 = [
 
 const collectionChunkArr = chunkArray(collectionArr, 4, 5);
 const collectionChunkArr2 = chunkArray(collectionArr2, 4, 5);
-const Collection = (props: any) => (
+const Collection = ({ title, slug, photos }: { title: string; slug: string; photos: Array<any> }) => (
 	<Box py="8">
 		<Heading as="h3" size="xl" textTransform="uppercase" color="mg.primary" mb="4">
-			Coleção X
+			{title}
 		</Heading>
 		<Stack direction="row">
-			{props.arr?.map((collectionGroup: any, key: number) => (
+			{photos?.map((collectionGroup: any, key: number) => (
 				<Flex wrap="wrap" w="33.3%" key={`collec-group-${key}`}>
 					{collectionGroup.map((collectionItem: any, keyItem: number, arr: Array<any>) => (
 						<Box
@@ -126,7 +127,7 @@ const Collection = (props: any) => (
 							height={arr.length > 1 ? 'calc(50% - 16px)' : '428px'}
 							m="2"
 						>
-							<Image src={collectionItem.img} layout="fill" />
+							<Image src={collectionItem.url} layout="fill" />
 						</Box>
 					))}
 				</Flex>
@@ -135,23 +136,55 @@ const Collection = (props: any) => (
 	</Box>
 );
 
-const Collections = () => (
+const Collections = ({ children }: { children: ReactChild }) => (
 	<Box bg="white" px="12">
-		<LastCollection />
-		<Collection arr={collectionChunkArr} />
-		<Collection arr={collectionChunkArr2} />
+		{children}
 	</Box>
 );
 
-export default function Photography() {
+export default function Photography({ collections }: { collections: Array<any> }) {
+	const [chunked, setChunked] = useState(false);
+	useEffect(() => {
+		collections.forEach((collection) => {
+			collection.photos = chunkArray(collection.photos, 4, 5);
+		});
+		setChunked(true);
+	}, [collections]);
 	return (
 		<BoxContainer>
 			<Box>
 				<Menu />
 				<Headline />
-				<Collections />
+				<Collections>
+					<>
+						<LastCollection />
+						{chunked && collections.map((collection) => <Collection {...collection} />)}
+					</>
+				</Collections>
 				<Footer />
 			</Box>
 		</BoxContainer>
 	);
+}
+
+const graphCMSURL: string = process.env.GRAPHCMS_URL || '';
+const graphCMS = new GraphQLClient('https://api-us-east-1.graphcms.com/v2/ckuwzgndk06p501z0dcx51dlw/master');
+export async function getStaticProps() {
+	const { collections } = await graphCMS.request(
+		`
+		query Collections{
+			collections{
+				id
+				slug
+				title
+				photos{
+					url
+				}
+			}
+		}
+		`
+	);
+	return {
+		props: { collections },
+	};
 }
