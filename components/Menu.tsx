@@ -21,7 +21,7 @@ const menuItems = [
 	},
 	{
 		label: 'Contato',
-		url: '#',
+		url: '/contact',
 	},
 	{
 		label: 'Blog',
