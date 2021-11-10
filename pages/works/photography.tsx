@@ -1,11 +1,13 @@
-import { Box, Flex, Heading, Tag, TagLabel, Text, Stack } from '@chakra-ui/react';
 import React, { ReactChild, ReactChildren, useEffect, useState } from 'react';
+import { Box, Flex, Heading, Tag, TagLabel, Text, Stack, Icon } from '@chakra-ui/react';
 import Menu from '../../components/Menu';
 import Image from 'next/image';
 import { chunkArray } from '../../utils';
 import Footer from '../../components/Footer';
 import BoxContainer from '../../components/_atoms/BoxContainer';
 import { GraphQLClient } from 'graphql-request';
+import NxCkLink from '../../components/_atoms/Link';
+import { FaArrowRight } from 'react-icons/fa';
 
 const Headline = () => (
 	<Box py="12" minH="380" align="center" justify="center" bg="white" wrap="wrap">
@@ -113,9 +115,17 @@ const collectionChunkArr = chunkArray(collectionArr, 4, 5);
 const collectionChunkArr2 = chunkArray(collectionArr2, 4, 5);
 const Collection = ({ title, slug, photos }: { title: string; slug: string; photos: Array<any> }) => (
 	<Box py="8">
-		<Heading as="h3" size="xl" textTransform="uppercase" color="mg.primary" mb="4">
-			{title}
-		</Heading>
+		<Flex align="center" justify="space-between">
+			<Heading as="h3" size="xl" textTransform="uppercase" color="mg.primary" mb="4">
+				{title}
+			</Heading>
+			<NxCkLink href={`/collection/${slug}`} color="red.800">
+				<>
+					Ver Mais <Icon as={FaArrowRight} />
+				</>
+			</NxCkLink>
+		</Flex>
+
 		<Stack direction="row">
 			{photos?.map((collectionGroup: any, key: number) => (
 				<Flex wrap="wrap" w="33.3%" key={`collec-group-${key}`}>
@@ -125,9 +135,10 @@ const Collection = ({ title, slug, photos }: { title: string; slug: string; phot
 							pos="relative"
 							width={arr.length > 1 ? 'calc(50% - 16px)' : '100%'}
 							height={arr.length > 1 ? 'calc(50% - 16px)' : '428px'}
+							bg="gray.600"
 							m="2"
 						>
-							<Image src={collectionItem.url} layout="fill" />
+							{collectionItem.url && <Image src={collectionItem.url} layout="fill" />}
 						</Box>
 					))}
 				</Flex>
@@ -143,13 +154,6 @@ const Collections = ({ children }: { children: ReactChild }) => (
 );
 
 export default function Photography({ collections }: { collections: Array<any> }) {
-	const [chunked, setChunked] = useState(false);
-	useEffect(() => {
-		collections.forEach((collection) => {
-			collection.photos = chunkArray(collection.photos, 4, 5);
-		});
-		setChunked(true);
-	}, [collections]);
 	return (
 		<BoxContainer>
 			<Box>
@@ -158,7 +162,9 @@ export default function Photography({ collections }: { collections: Array<any> }
 				<Collections>
 					<>
 						<LastCollection />
-						{chunked && collections.map((collection) => <Collection {...collection} />)}
+						{collections.map((collection, index) => (
+							<Collection {...collection} key={index} />
+						))}
 					</>
 				</Collections>
 				<Footer />
@@ -184,6 +190,10 @@ export async function getStaticProps() {
 		}
 		`
 	);
+
+	collections.forEach((collection: any) => {
+		collection.photos = chunkArray(collection.photos, 4, 5);
+	});
 	return {
 		props: { collections },
 	};
