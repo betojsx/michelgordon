@@ -17,7 +17,7 @@ const menuItems = [
 	},
 	{
 		label: 'Sobre',
-		url: '#',
+		url: '/about',
 	},
 	{
 		label: 'Contato',
