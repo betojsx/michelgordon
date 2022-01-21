@@ -41,7 +41,7 @@ const Banner = ({ title, text, buttonText, image }: IBannerProps) => (
 			<Heading size="2xl" mb="6" color="white">
 				{title}
 			</Heading>
-			<Text fontSize="2xl" mb="4" lineHeight="8">
+			<Text fontSize="2xl" mb="4" lineHeight="8" color="white">
 				{text}
 			</Text>
 			<Button>

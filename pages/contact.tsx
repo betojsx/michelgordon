@@ -23,7 +23,7 @@ import SocialLinks from '../components/_atoms/SocialLinks';
 const Hero = ({ title, description, img }: any) => (
 	<Flex
 		pos="relative"
-		h="calc(100vh - 300px)"
+		h="calc(100vh - 100px)"
 		align="center"
 		justify="center"
 		sx={{

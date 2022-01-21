@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Box, Flex, Heading, Text, Stack, Button } from '@chakra-ui/react';
 import { GraphQLClient } from 'graphql-request';
-
+import graphcmsClient from '../../utils/graphcmsClient';
 import BoxContainer from '../../components/_atoms/BoxContainer';
 import Menu from '../../components/Menu';
 import Footer from '../../components/Footer';
@@ -53,7 +53,7 @@ export default function Collection({ collection }: any) {
 		</BoxContainer>
 	);
 }
-const graphcms = new GraphQLClient(`https://api-us-east-1.graphcms.com/v2/ckuwzgndk06p501z0dcx51dlw/master`);
+const graphcms = graphcmsClient();
 export async function getStaticProps({ params }: any) {
 	const { collection } = await graphcms.request(
 		`

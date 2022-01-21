@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { chunkArray } from '../../utils';
 import Footer from '../../components/Footer';
 import BoxContainer from '../../components/_atoms/BoxContainer';
-import { GraphQLClient } from 'graphql-request';
+import graphcmsClient from '../../utils/graphcmsClient';
 import NxCkLink from '../../components/_atoms/Link';
 import { FaArrowRight } from 'react-icons/fa';
 
@@ -173,8 +173,7 @@ export default function Photography({ collections }: { collections: Array<any> }
 	);
 }
 
-const graphCMSURL: string = process.env.GRAPHCMS_URL || '';
-const graphCMS = new GraphQLClient('https://api-us-east-1.graphcms.com/v2/ckuwzgndk06p501z0dcx51dlw/master');
+const graphCMS = graphcmsClient();
 export async function getStaticProps() {
 	const { collections } = await graphCMS.request(
 		`

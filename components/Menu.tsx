@@ -25,7 +25,7 @@ const menuItems = [
 	},
 	{
 		label: 'Blog',
-		url: '#',
+		url: '/blog',
 	},
 ];
 const Menu = () => {
