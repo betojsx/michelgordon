@@ -40,7 +40,7 @@ const SliderItem = ({ imageSrc }) => (
 		}}
 		h="calc(100vh - 100px)"
 	>
-		<Image src={imageSrc} width={1600} height={1600} objectFit="cover" />
+		<Image src={imageSrc} objectFit="cover" width="1440" height="993" />
 	</Box>
 );
 
@@ -62,11 +62,9 @@ const responsive = {
 	},
 };
 
-const TagSection = () => {};
-
 const LogoSymbol = () => (
 	<Box pos="absolute" top="20px" left="20px" zIndex="1">
-		<Image src="/logo_symbol.png" width="70" height="72" />
+		<Image src="/logo_symbol.png" width="90" height="72" />
 	</Box>
 );
 //@ts-ignore
@@ -74,11 +72,8 @@ const Slider = (props) => {
 	return (
 		<Box pos="relative" {...props}>
 			<LogoSymbol />
-			<Carousel responsive={responsive}>
-				{SLIDERS.map((slideItem, index) => (
-					<SliderItem imageSrc={slideItem.imageSrc} key={`si-${index}`} />
-				))}
-			</Carousel>
+
+			<SliderItem imageSrc="/hero.jpg" />
 		</Box>
 	);
 };
