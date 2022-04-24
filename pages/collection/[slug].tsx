@@ -1,34 +1,101 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Image from 'next/image';
-import { Box, Flex, Heading, Text, Stack, Button } from '@chakra-ui/react';
-import { GraphQLClient } from 'graphql-request';
+import {
+	Box,
+	Flex,
+	Heading,
+	Text,
+	Stack,
+	Button,
+	Modal,
+	ModalOverlay,
+	ModalContent,
+	ModalHeader,
+	ModalBody,
+	ModalCloseButton,
+	useDisclosure,
+} from '@chakra-ui/react';
 import graphcmsClient from '../../utils/graphcmsClient';
 import BoxContainer from '../../components/_atoms/BoxContainer';
 import Menu from '../../components/Menu';
 import Footer from '../../components/Footer';
+import Masonry from 'react-masonry-css';
+import { IPhoto } from '../../types/photo.interface';
 
-const Hero = ({ title, description }: { title: string; description: string }) => (
-	<Flex pos="relative" h="calc(100vh - 300px)" align="center" justify="center">
-		<Box pos="relative" zIndex="1" textAlign="center">
-			<Heading size="2xl" maxW="container.md" color="white" mb="8">
-				{title}
-			</Heading>
-			<Text color="white" fontSize="xl" maxW="xl">
-				{description}
-			</Text>
+const Hero = ({ title, image }: { title: string; image: any }) => (
+	<Flex
+		pos="relative"
+		h="calc(100vh - 200px)"
+		align="center"
+		justify="center"
+		bgImg={image.url}
+		bgSize="cover"
+		bgPos="center"
+	>
+		<Heading
+			size="4xl"
+			maxW="container.md"
+			mb="3"
+			color="transparent"
+			bgImage="inherit"
+			bgClip="text"
+			mixBlendMode="screen"
+		>
+			{title}
+		</Heading>
+	</Flex>
+);
+
+const breakpointColumnsObj = {
+	default: 3,
+	700: 2,
+	500: 1,
+};
+const PhotosSection = ({ photos }: { photos: Array<any> }) => {
+	const { isOpen, onOpen, onClose } = useDisclosure();
+	const [displayPhoto, setDisplayPhoto] = React.useState<IPhoto | null>(null);
+
+	const openImageOnDialog = useCallback(
+		(photo) => {
+			onOpen();
+			setDisplayPhoto(photo);
+		},
+		[onOpen]
+	);
+
+	return (
+		<Box bg="white">
+			<Masonry
+				breakpointCols={breakpointColumnsObj}
+				className="my-masonry-grid"
+				columnClassName="my-masonry-grid_column"
+			>
+				{photos.map((photo) => (
+					<Box w="100%" pos="relative" mb="4" cursor="pointer" onClick={() => openImageOnDialog(photo)}>
+						<Image src={photo.url} width={photo.width} height={photo.height} layout="responsive" />
+					</Box>
+				))}
+			</Masonry>
+			<Modal isOpen={isOpen} onClose={onClose} size="2xl">
+				<ModalOverlay />
+				<ModalContent bg="mg.primary">
+					<ModalHeader />
+					<ModalCloseButton color="white" />
+					{displayPhoto && (
+						<Box p={2} mt={2}>
+							<Image
+								src={displayPhoto.url}
+								layout="responsive"
+								width={displayPhoto.width}
+								height={displayPhoto.height}
+							/>
+						</Box>
+					)}
+				</ModalContent>
+			</Modal>
 		</Box>
-		<Image src="/hero_mockup.jpg" layout="fill" />
-	</Flex>
-);
-const PhotosSection = ({ photos }: { photos: Array<any> }) => (
-	<Flex wrap="wrap" p="12" bg="white" justify="space-between">
-		{photos.map((photo) => (
-			<Box w="calc(33% - 8px)" h="428px" pos="relative" mb="4">
-				<Image src={photo.url} layout="fill" />
-			</Box>
-		))}
-	</Flex>
-);
+	);
+};
 
 const CallToAction = () => (
 	<Flex justify="center" align="center" py="12" bg="white" wrap="wrap">
@@ -40,13 +107,14 @@ const CallToAction = () => (
 		</Button>
 	</Flex>
 );
-export default function Collection({ collection }: any) {
+export default function Collection({ collection, hero }: any) {
+	const { title, description, image, photos } = collection;
 	return (
 		<BoxContainer>
 			<>
 				<Menu />
-				<Hero title={collection.title} description={collection.description} />
-				<PhotosSection photos={collection.photos} />
+				<Hero title={title} image={image} />
+				<PhotosSection photos={photos} />
 				<CallToAction />
 				<Footer />
 			</>
@@ -61,9 +129,14 @@ export async function getStaticProps({ params }: any) {
 			collection(where: {slug: $slug}){
 			  title
 			  description
+			  image {
+				  url
+			  }
 			  photos{
 				url
 				description
+				width
+				height
 			  }
 			}
 		  }
@@ -72,7 +145,6 @@ export async function getStaticProps({ params }: any) {
 			slug: params.slug,
 		}
 	);
-
 	return {
 		props: {
 			collection,

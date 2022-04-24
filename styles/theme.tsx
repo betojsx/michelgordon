@@ -6,6 +6,22 @@ export default extendTheme({
 			body: {
 				backgroundColor: 'mg.primary',
 			},
+			'.my-masonry-grid': {
+				display: 'flex',
+				marginLeft: '-16px' /* gutter size offset */,
+				width: 'auto',
+				padding: '16px',
+			},
+			'.my-masonry-grid_column': {
+				paddingLeft: '16px' /* gutter size */,
+				backgroundClip: 'padding-box',
+			},
+
+			/* Style your items */
+			'.my-masonry-grid_column > div': {
+				background: 'grey',
+				marginBottom: '16px',
+			},
 		},
 	},
 	fonts: {

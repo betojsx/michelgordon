@@ -52,67 +52,6 @@ const LastCollection = () => (
 	</Box>
 );
 
-const collectionArr = [
-	{
-		img: '/collection-0.jpg',
-	},
-	{
-		img: '/collection-1.jpg',
-	},
-	{
-		img: '/collection-2.jpg',
-	},
-	{
-		img: '/collection-3.jpg',
-	},
-	{
-		img: '/collection-4.jpg',
-	},
-	{
-		img: '/collection-5.jpg',
-	},
-	{
-		img: '/collection-6.jpg',
-	},
-	{
-		img: '/collection-7.jpg',
-	},
-	{
-		img: '/collection-8.jpg',
-	},
-];
-const collectionArr2 = [
-	{
-		img: '/collection-9.jpg',
-	},
-	{
-		img: '/collection-13.jpg',
-	},
-	{
-		img: '/collection-2.jpg',
-	},
-	{
-		img: '/collection-4.jpg',
-	},
-	{
-		img: '/collection-12.jpg',
-	},
-	{
-		img: '/collection-11.jpg',
-	},
-	{
-		img: '/collection-14.jpg',
-	},
-	{
-		img: '/collection-1.jpg',
-	},
-	{
-		img: '/collection-10.jpg',
-	},
-];
-
-const collectionChunkArr = chunkArray(collectionArr, 4, 5);
-const collectionChunkArr2 = chunkArray(collectionArr2, 4, 5);
 const Collection = ({ title, slug, photos }: { title: string; slug: string; photos: Array<any> }) => (
 	<Box py="8">
 		<Flex align="center" justify="space-between">
@@ -182,7 +121,7 @@ export async function getStaticProps() {
 				id
 				slug
 				title
-				photos{
+				photos(first: 9){
 					url
 				}
 			}
