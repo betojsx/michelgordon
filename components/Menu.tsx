@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Box, Flex, Link as ChakraLink } from '@chakra-ui/react';
+import NxCkLink from './_atoms/Link';
 const menuItems = [
 	{
 		label: 'Home',
@@ -51,6 +52,7 @@ const Menu = () => {
 		window.addEventListener('scroll', handleScroll);
 		return () => {
 			window.removeEventListener('scroll', handleScroll);
+			document.body.style.paddingTop = '0';
 		};
 	}, []);
 	return (
@@ -70,7 +72,9 @@ const Menu = () => {
 			maxW="1440px"
 			mx="auto"
 		>
-			<Image src="/logo_michael_gordon.png" width="268" height="59" />
+			<NxCkLink href="/" cursor="pointer">
+				<Image src="/logo_michel_gordon.png" width="240" height="135" />
+			</NxCkLink>
 			<Flex as="nav">
 				{menuItems.map(({ label, url }, index) => (
 					<Box ml="6" key={label}>
