@@ -17,16 +17,16 @@ import {
 import { GraphQLClient } from 'graphql-request';
 
 import BoxContainer from '../components/_atoms/BoxContainer';
-import Menu from '../components/Menu';
-import Footer from '../components/Footer';
+import Menu from '../components/_molecules/Menu';
+import Footer from '../components/_molecules/Footer';
 import NxCkLink from '../components/_atoms/Link';
 import graphcmsClient from '../utils/graphcmsClient';
 import { FaArrowRight, FaBookOpen } from 'react-icons/fa';
 
 const Headline = () => (
-	<Box py="12" minH="200" align="center" justify="center" bg="white" wrap="wrap">
+	<Box py="12" minH="200" alignContent="center" justifyContent="center" bg="white" flexWrap="wrap">
 		<Container maxW="container.xl">
-			<Heading size="2xl" maxW="container.md" color="mg.primary" textAlign="center" mb="8">
+			<Heading size="2xl" color="mg.primary" textAlign="center" mb="8">
 				Blog
 			</Heading>
 			<Divider borderColor="gray.300" />
@@ -40,7 +40,7 @@ const PostsSection = ({ posts }: { posts: Array<any> }) => (
 			<Heading color="mg.primary" mb="2">
 				Postagens Anteriores
 			</Heading>
-			<Flex wrap="wrap" spacing="4" align="flex-start" justify="flex-start">
+			<Flex wrap="wrap" align="flex-start" justify="flex-start">
 				{posts.map((post) => (
 					<Box
 						w="calc(33% - 16px)"

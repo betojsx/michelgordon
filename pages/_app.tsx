@@ -11,11 +11,14 @@ import '@fontsource/rubik/700.css';
 import '@fontsource/rubik/600.css';
 
 import theme from '../styles/theme';
+import { MediaContextProvider } from '../media';
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<ChakraProvider theme={theme}>
-			<Component {...pageProps} />
+			<MediaContextProvider>
+				<Component {...pageProps} />
+			</MediaContextProvider>
 		</ChakraProvider>
 	);
 }

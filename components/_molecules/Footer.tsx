@@ -1,15 +1,16 @@
 import React from 'react';
 import { Box, Container, Flex, Text } from '@chakra-ui/react';
-import NxCkLink from './_atoms/Link';
+import NxCkLink from '../_atoms/Link';
 import Image from 'next/image';
+import { Media } from '../../media';
 
 export default function Footer() {
 	return (
 		<Box>
 			<Box bg="mg.primary" py="12">
 				<Container maxW="container.lg">
-					<Flex align="center">
-						<Box mr="10">
+					<Flex align="center" wrap="wrap">
+						<Box mr={{ base: 'auto', lg: 8 }} ml={{ base: 'auto', lg: 0 }}>
 							<Image src="/symbol_alternate.png" width="215px" height="215px"></Image>
 						</Box>
 						<Box mr="10">
@@ -38,9 +39,9 @@ export default function Footer() {
 				</Container>
 			</Box>
 			<Box bg="mg.secondary" py="5">
-				<Flex align="center" justify="center">
-					<Text mr="3">Designed by</Text> <Image src="/mybuu.png" width="88px" height="27px" />{' '}
-					<Text ml="4"> | Todos os direitos reservados</Text>.
+				<Flex align="center" justify="center" wrap={{ base: 'wrap', lg: 'nowrap' }}>
+					<Text mr="3">Designed by</Text> <Image src="/mybuu.png" width="88px" height="27px" />
+					<Text ml="4">Todos os direitos reservados.</Text>
 				</Flex>
 			</Box>
 		</Box>

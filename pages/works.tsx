@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { Box, Button, Flex, Heading, Text } from '@chakra-ui/react';
-import Menu from '../components/Menu';
-import Footer from '../components/Footer';
+import Menu from '../components/_molecules/Menu';
+import Footer from '../components/_molecules/Footer';
 import NxCkLink from '../components/_atoms/Link';
 import BoxContainer from '../components/_atoms/BoxContainer';
 const Headline = () => (
@@ -37,7 +37,7 @@ const Banner = ({ title, text, buttonText, image }: IBannerProps) => (
 			},
 		}}
 	>
-		<Box maxW="md" pos="relative" zIndex="1" textAlign="center">
+		<Box maxW="md" pos="relative" zIndex="1" textAlign="center" px={4}>
 			<Heading size="2xl" mb="6" color="white">
 				{title}
 			</Heading>
@@ -87,12 +87,18 @@ const STEPS = [
 
 const HowToBuy = () => (
 	<Flex py="12" minH="380" align="center" justify="center" bg="white" wrap="wrap">
-		<Heading size="xl" maxW="460px" color="mg.primary" textAlign="center" mb="8">
+		<Heading size="xl" maxW="460px" color="mg.primary" textAlign="center" mb={{ base: 0, lg: 8 }}>
 			Como Ter Uma Obra Para Chamar de Sua
 		</Heading>
-		<Flex justify="space-between" align="flex-start" px="12" my="10">
+		<Flex
+			justify="space-between"
+			align="flex-start"
+			px="12"
+			my={{ base: 4, lg: 10 }}
+			wrap={{ base: 'wrap', lg: 'nowrap' }}
+		>
 			{STEPS.map((step, index) => (
-				<Box maxW="33%" textAlign="center" key={index}>
+				<Box maxW={{ base: '100%', lg: '33%' }} mb={{ base: 8, lg: 0 }} textAlign="center" key={index}>
 					<Image src={step.image} width="160px" height="auto" />
 					<Text color="mg.primary" fontSize="xl" lineHeight="shorter" mt="4">
 						{step.text}

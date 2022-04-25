@@ -16,8 +16,8 @@ import {
 import { GraphQLClient } from 'graphql-request';
 
 import BoxContainer from '../components/_atoms/BoxContainer';
-import Menu from '../components/Menu';
-import Footer from '../components/Footer';
+import Menu from '../components/_molecules/Menu';
+import Footer from '../components/_molecules/Footer';
 import SocialLinks from '../components/_atoms/SocialLinks';
 
 const Hero = ({ title, description, img }: any) => (

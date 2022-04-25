@@ -14,11 +14,12 @@ import {
 	ModalBody,
 	ModalCloseButton,
 	useDisclosure,
+	useBreakpointValue,
 } from '@chakra-ui/react';
 import graphcmsClient from '../../utils/graphcmsClient';
 import BoxContainer from '../../components/_atoms/BoxContainer';
-import Menu from '../../components/Menu';
-import Footer from '../../components/Footer';
+import Menu from '../../components/_molecules/Menu';
+import Footer from '../../components/_molecules/Footer';
 import Masonry from 'react-masonry-css';
 import { IPhoto } from '../../types/photo.interface';
 
@@ -54,7 +55,7 @@ const breakpointColumnsObj = {
 const PhotosSection = ({ photos }: { photos: Array<any> }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const [displayPhoto, setDisplayPhoto] = React.useState<IPhoto | null>(null);
-
+	const modalSize = useBreakpointValue({ base: 'full', lg: '2xl' });
 	const openImageOnDialog = useCallback(
 		(photo) => {
 			onOpen();
@@ -76,7 +77,7 @@ const PhotosSection = ({ photos }: { photos: Array<any> }) => {
 					</Box>
 				))}
 			</Masonry>
-			<Modal isOpen={isOpen} onClose={onClose} size="2xl">
+			<Modal isOpen={isOpen} onClose={onClose} size={modalSize} trapFocus={false}>
 				<ModalOverlay />
 				<ModalContent bg="mg.primary">
 					<ModalHeader />

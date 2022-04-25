@@ -2,9 +2,10 @@ import React from 'react';
 import Image from 'next/image';
 import { GraphQLClient } from 'graphql-request';
 import { Box, Container, Flex, Heading, Text } from '@chakra-ui/react';
-import Menu from '../../components/Menu';
+import Menu from '../../components/_molecules/Menu';
 import graphcmsClient from '../../utils/graphcmsClient';
 import NxCkLink from '../../components/_atoms/Link';
+import BoxContainer from '../../components/_atoms/BoxContainer';
 
 const Hero = ({ title, img }: { title: string; img: string }) => (
 	<Flex
@@ -58,7 +59,7 @@ export default function Posts({ post, relatedPosts }: any) {
 					<Heading as="h4" size="lg" color="mg.primary" mb="4">
 						Confira outros posts
 					</Heading>
-					<Flex wrap="wrap" spacing="4" align="flex-start" justify="flex-start">
+					<Flex wrap="wrap" align="flex-start" justify="flex-start">
 						{relatedPosts.map((post: any) => (
 							<Box w="calc(33% - 16px)" mb="8" mx="2">
 								<NxCkLink href={`/posts/${post.slug}`}>

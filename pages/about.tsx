@@ -4,8 +4,8 @@ import { Box, Flex, Heading, Text, Stack, Button, Container } from '@chakra-ui/r
 import { GraphQLClient } from 'graphql-request';
 
 import BoxContainer from '../components/_atoms/BoxContainer';
-import Menu from '../components/Menu';
-import Footer from '../components/Footer';
+import Menu from '../components/_molecules/Menu';
+import Footer from '../components/_molecules/Footer';
 
 const Hero = ({ title, description, img }: any) => (
 	<Flex
