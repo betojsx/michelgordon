@@ -26,7 +26,7 @@ const menuItems = [
 	},
 	{
 		label: 'Educação',
-		url: '#',
+		url: '/education',
 	},
 	{
 		label: 'Sobre',

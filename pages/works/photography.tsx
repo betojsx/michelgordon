@@ -47,8 +47,8 @@ const LastCollection = () => (
 		<Heading as="h3" size="xl" textTransform="uppercase" color="mg.primary" mb="4">
 			Última Coleção
 		</Heading>
-		<Box>
-			<Image src="/hero_mockup.jpg" width="1440" height="440" />
+		<Box width="1440" height="440" position="relative">
+			<Image src="/hero.jpg" layout="fill" objectFit="cover" />
 		</Box>
 	</Box>
 );
