@@ -77,7 +77,7 @@ const Collection = ({ title, slug, photos }: { title: string; slug: string; phot
 							bg="gray.600"
 							m="2"
 						>
-							{collectionItem.url && <Image src={collectionItem.url} layout="fill" />}
+							{collectionItem.url && <Image src={collectionItem.url} layout="fill" objectFit="cover" />}
 						</Box>
 					))}
 				</Flex>
@@ -129,8 +129,13 @@ export async function getStaticProps() {
 		`
 	);
 
-	collections.forEach((collection: any) => {
-		collection.photos = chunkArray(collection.photos, 4, 5);
+	collections.forEach((collection: any, index: number) => {
+		if (index % 2 === 0) {
+			collection.photos = chunkArray(collection.photos, 4, [5]);
+		} else {
+			const firstSixPhotos = collection.photos.slice(0, 6);
+			collection.photos = chunkArray(firstSixPhotos, 4, [1, 6]);
+		}
 	});
 	return {
 		props: { collections },
