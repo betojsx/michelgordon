@@ -74,7 +74,7 @@ const SectionAbout = () => (
 );
 
 const SectionText = () => (
-	<Box bg="mg.secondary" textAlign="center" px={{ lg: '20%' }} py="14">
+	<Box bg="mg.secondary" textAlign="center" px={{ base: 4, lg: '20%' }} py="14">
 		<Heading size="lg" mb="8">
 			O Centro Cultural do Oriente Médio foi desenvolvido para disseminar o conhecimento e a cultura do Oriente
 			Médio para os interessados ou apaixonados por esse universo.
@@ -88,9 +88,9 @@ const SectionText = () => (
 const SponsorSection = () => (
 	<Box bg="gray.300" overflowX="hidden">
 		<Container maxW="container.xl">
-			<Flex py="12">
+			<Flex py="12" wrap={{ base: 'wrap', lg: 'nowrap' }}>
 				<Box d={{ base: 'none', lg: 'block' }} flex="0 0 10%" />
-				<Box color="mg.primary" flex="1 0 50%">
+				<Box color="mg.primary" flex="1 0 50%" mb={{ base: 8, lg: 0 }}>
 					<Heading as="h3" textTransform="uppercase" mb="2">
 						Apoie o Centro
 					</Heading>

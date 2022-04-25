@@ -43,7 +43,7 @@ const PostsSection = ({ posts }: { posts: Array<any> }) => (
 			<Flex wrap="wrap" align="flex-start" justify="flex-start">
 				{posts.map((post) => (
 					<Box
-						w="calc(33% - 16px)"
+						w={{ base: '100%', lg: 'calc(33% - 16px)' }}
 						mb="8"
 						mx="2"
 						pos="relative"
@@ -133,13 +133,13 @@ const LastPost = ({ lastPost }: any) => (
 			</Heading>
 			<NxCkLink href={`/posts/${lastPost.slug}`} _hover={{ textDecoration: 'none' }}>
 				<HStack wrap="wrap" spacing="4" bg="mg.primary">
-					<Box width="58%" height="336px" pos="relative">
+					<Box width={{ base: '100%', lg: '58%' }} height="336px" pos="relative">
 						<Image
 							src={lastPost.featuredImage?.url || 'https://picsum.photos/seed/picsum/800/428'}
 							layout="fill"
 						/>
 					</Box>
-					<Box w="39%" px="6">
+					<Box w={{ base: '100%', lg: '39%' }} px={{ base: 2, lg: 6 }} py={{ base: 4, lg: 0 }}>
 						<Heading as="h3" size="lg" color="white" mb="2">
 							{lastPost.title}
 						</Heading>
@@ -158,14 +158,14 @@ export default function Collection({ posts }: { posts: Array<any> }) {
 
 	return (
 		<BoxContainer>
-			<>
+			<Box bg="white">
 				<Menu />
 				<Headline />
 				{lastPost && <LastPost lastPost={lastPost} />}
 				<PostsSection posts={posts} />
 
 				<Footer />
-			</>
+			</Box>
 		</BoxContainer>
 	);
 }

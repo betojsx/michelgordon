@@ -8,6 +8,7 @@ import BoxContainer from '../../components/_atoms/BoxContainer';
 import graphcmsClient from '../../utils/graphcmsClient';
 import NxCkLink from '../../components/_atoms/Link';
 import { FaArrowRight } from 'react-icons/fa';
+import { Media } from '../../media';
 
 const Headline = () => (
 	<Box py="12" minH="380" alignItems="center" justifyContent="center" bg="white" flexWrap="wrap">
@@ -86,13 +87,48 @@ const Collection = ({ title, slug, photos }: { title: string; slug: string; phot
 	</Box>
 );
 
+const CollectionMobile = ({ title, slug, photos }: { title: string; slug: string; photos: Array<any> }) => (
+	<Box py="8">
+		<Flex align="center" justify="space-between">
+			<Heading as="h3" size="xl" textTransform="uppercase" color="mg.primary" mb="4">
+				{title}
+			</Heading>
+			<NxCkLink href={`/collection/${slug}`} color="red.800">
+				<>
+					Ver Mais <Icon as={FaArrowRight} />
+				</>
+			</NxCkLink>
+		</Flex>
+
+		<Stack direction={['column', 'row']}>
+			{photos?.map((collectionItem: any, key: number) => (
+				<Box key={`collec-item-${key}`}>
+					{collectionItem.url && (
+						<Image
+							src={collectionItem.url}
+							layout="responsive"
+							width={collectionItem.width}
+							height={collectionItem.height}
+						/>
+					)}
+				</Box>
+			))}
+		</Stack>
+	</Box>
+);
+
 const Collections = ({ children }: { children: ReactChild }) => (
-	<Box bg="white" px="12">
+	<Box bg="white" px={{ base: 2, lg: 12 }}>
 		{children}
 	</Box>
 );
 
 export default function Photography({ collections }: { collections: Array<any> }) {
+	const firstThreePhotosFromCollections = collections.map((collection: any) => ({
+		...collection,
+		photos: collection.photos.flat().slice(0, 3),
+	}));
+
 	return (
 		<BoxContainer>
 			<Box>
@@ -101,9 +137,16 @@ export default function Photography({ collections }: { collections: Array<any> }
 				<Collections>
 					<>
 						<LastCollection />
-						{collections.map((collection, index) => (
-							<Collection {...collection} key={index} />
-						))}
+						<Media greaterThan="lg">
+							{collections.map((collection, index) => (
+								<Collection {...collection} key={index} />
+							))}
+						</Media>
+						<Media lessThan="lg">
+							{firstThreePhotosFromCollections.map((collection, index) => (
+								<CollectionMobile {...collection} key={index} />
+							))}
+						</Media>
 					</>
 				</Collections>
 				<Footer />
@@ -123,6 +166,8 @@ export async function getStaticProps() {
 				title
 				photos(first: 9){
 					url
+					width
+					height
 				}
 			}
 		}

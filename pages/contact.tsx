@@ -23,9 +23,10 @@ import SocialLinks from '../components/_atoms/SocialLinks';
 const Hero = ({ title, description, img }: any) => (
 	<Flex
 		pos="relative"
-		h="calc(100vh - 100px)"
+		h={{ lg: 'calc(80vh - 100px)' }}
 		align="center"
 		justify="center"
+		wrap={{ base: 'wrap', lg: 'nowrap' }}
 		sx={{
 			_before: {
 				content: '""',
@@ -41,7 +42,7 @@ const Hero = ({ title, description, img }: any) => (
 	>
 		<Container maxW="container.xl" pos="relative" zIndex="1">
 			<Flex justify="flex-start" px="4">
-				<Box maxW="lg">
+				<Box maxW="lg" py={{ base: 6, lg: 0 }}>
 					<Heading size="xl" color="white" mb="4">
 						TEM ALGUMA DÚVIDA, QUER CONTRIBUIR COM O CENTRO, OU SE TORNAR UM PARCEIRO?
 					</Heading>
@@ -54,7 +55,17 @@ const Hero = ({ title, description, img }: any) => (
 				</Box>
 			</Flex>
 		</Container>
-		<Box pos="absolute" zIndex="1" bottom="0" right="10" py="10" px="8" bg="mg.secondary" maxW="lg" w="100%">
+		<Box
+			pos={{ base: 'static', lg: 'absolute' }}
+			zIndex="1"
+			bottom="0"
+			right="10"
+			py={{ base: 6, lg: '10' }}
+			px="8"
+			bg="mg.secondary"
+			maxW="lg"
+			w="100%"
+		>
 			<FormControl mb="4">
 				<FormLabel>Nome</FormLabel>
 				<Input type="text" id="nome" name="nome" bg="white" color="mg.primary" />
