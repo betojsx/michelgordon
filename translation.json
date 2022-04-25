@@ -1,0 +1,56 @@
+{
+	"HOME_PAGE": {
+		"HEADLINE": "Espaço colaborativo para os admiradores do Oriente Médio",
+		"PRESENTATION": "Lorem Ipsum Dot Color Amet",
+		"PUBLISHING": {
+			"BOOKS": "Conheça os Livros",
+			"VIDEOS": "Participe das Aulas"
+		},
+		"YOUTUBE": "Acompanhe nossos conteúdos no YouTube",
+		"INSTAGRAM": "ÚLTIMAS POSTAGEMS DO INSTAGRAM"
+	},
+	"WORK_PAGE": {
+		"TITLE": "Conheça Nossa Linha de Produtos Para Decoração",
+		"PHOTOGRAPHY": {
+			"TITLE": "Fotografia",
+			"DESCRIPTION": "Verdadeiras obras de arte que vão iluminar o seu espaço",
+			"BUTTON": "Clique aqui para ver todas as fotos"
+		},
+		"PAINTING": {
+			"TITLE": "Pinturas",
+			"DESCRIPTION": "Pinturas em aquarela para decorar o seu ambiente",
+			"BUTTON": "Clique aqui para ver todas as pinturas"
+		},
+		"HOW_TO_BUY": {
+			"TITLE": "Como Ter Uma Obra Para Chamar de Sua",
+			"STEP_1": "Escolha a sua obra favorita, defina tamanho, material e cores (podemos te ajudar nessa escolha).",
+			"STEP_2": "Nos envie pelo WhatsApp a sua escolha. Nós organizaremos tudo para você e lhe passaremos os dados para pagamento.",
+			"STEP_3": "Agora é só aguardar a sua obra chegar no seu endereço. Assim que chegar, manda uma fotinha do ambiente com ela para vermos!",
+			"BUTTON": "Quero Adquirir uma Obra"
+		}
+	},
+	"WORK_DETAILS_PAGE": {
+		"TITLE": "Obras Fotográficas",
+		"DESCRIPTION": "Obras de arte feitas com fotografias autorais e exclusivas, impressas em Fine Art com o melhor material do mercado, garantindo durabilidade de mais de 100 anos.",
+		"LAST_COLLECTION": "ÚLTIMA COLEÇÃO"
+	},
+	"MENU": {
+		"HOME": "HOME",
+		"WORK": "OBRAS",
+		"EDUCATION": "EDUCAÇÃO",
+		"ABOUT": "SOBRE",
+		"CONTACT": "CONTATO",
+		"BLOG": "BLOG"
+	},
+	"FOOTER": {
+		"NAV": [
+			"Leve uma obra e decore seu ambiente",
+			"Leia mais sobre o Oriente Médio",
+			"Participe da próxima aula",
+			"Apoie o Centro (doe qualquer valor)",
+			"Anuncie seu produto conosco",
+			"Se inscreva em nosso canal no YouTube"
+		],
+		"COPYRIGHT": ["Designed by", "Todos os direitos reservados."]
+	}
+}
