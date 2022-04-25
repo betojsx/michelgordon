@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app';
 import { ChakraProvider, ColorModeProvider, CSSReset } from '@chakra-ui/react';
-
+import Head from 'next/head';
 import '@fontsource/poppins/200.css';
 import '@fontsource/poppins/300.css';
 import '@fontsource/poppins/400.css';
@@ -15,11 +15,16 @@ import { MediaContextProvider } from '../media';
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
-		<ChakraProvider theme={theme}>
-			<MediaContextProvider>
-				<Component {...pageProps} />
-			</MediaContextProvider>
-		</ChakraProvider>
+		<>
+			<Head>
+				<title>Michel Gordon</title>
+			</Head>
+			<ChakraProvider theme={theme}>
+				<MediaContextProvider>
+					<Component {...pageProps} />
+				</MediaContextProvider>
+			</ChakraProvider>
+		</>
 	);
 }
 export default MyApp;
