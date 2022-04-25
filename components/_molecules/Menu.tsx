@@ -1,6 +1,3 @@
-import React, { useState, useRef, useEffect } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
 import {
 	Box,
 	Flex,
@@ -12,10 +9,12 @@ import {
 	ModalContent,
 	useDisclosure,
 } from '@chakra-ui/react';
-import NxCkLink from '../_atoms/Link';
+import Image from 'next/image';
+import Link from 'next/link';
+import React, { useEffect, useRef, useState } from 'react';
 import { RiMenuLine } from 'react-icons/ri';
-import { useBreakpoint } from '../../utils';
 import { Media } from '../../media';
+import NxCkLink from '../_atoms/Link';
 const menuItems = [
 	{
 		label: 'Home',
