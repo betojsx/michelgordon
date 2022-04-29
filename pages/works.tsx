@@ -18,8 +18,9 @@ interface IBannerProps {
 	text: string;
 	buttonText: string;
 	image: string;
+	link: string;
 }
-const Banner = ({ title, text, buttonText, image }: IBannerProps) => (
+const Banner = ({ title, text, buttonText, image, link }: IBannerProps) => (
 	<Flex
 		py="12"
 		align="center"
@@ -45,7 +46,7 @@ const Banner = ({ title, text, buttonText, image }: IBannerProps) => (
 				{text}
 			</Text>
 			<Button>
-				<NxCkLink href="/works/photography">{`Clique aqui para ver todas as ${buttonText}`}</NxCkLink>
+				<NxCkLink href={link}>{`Clique aqui para ver todas as ${buttonText}`}</NxCkLink>
 			</Button>
 		</Box>
 		<Box
@@ -123,12 +124,14 @@ export default function Works() {
 					text="Verdadeiras obras de arte que vão iluminar o seu espaço"
 					buttonText="fotos"
 					image="/hero_mockup.jpg"
+					link="/works/photography"
 				/>
 				<Banner
 					title="Pinturas"
 					text="Pinturas em aquarela para decorar o seu ambiente"
 					buttonText="pinturas"
 					image="/painting_mockup.png"
+					link="/collection/painting"
 				/>
 				<HowToBuy />
 				<Footer />
