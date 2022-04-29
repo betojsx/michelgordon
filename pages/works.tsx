@@ -131,7 +131,7 @@ export default function Works() {
 					text="Pinturas em aquarela para decorar o seu ambiente"
 					buttonText="pinturas"
 					image="/painting_mockup.png"
-					link="/collection/painting"
+					link="/collection/watercolor"
 				/>
 				<HowToBuy />
 				<Footer />

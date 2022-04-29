@@ -41,6 +41,7 @@ const Hero = ({ title, image }: { title: string; image: any }) => (
 			bgImage="inherit"
 			bgClip="text"
 			mixBlendMode="screen"
+			textShadow="xl"
 		>
 			{title}
 		</Heading>
