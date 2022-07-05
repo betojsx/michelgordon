@@ -24,6 +24,8 @@ const SliderItem = ({ imageSrc }) => (
 	</Box>
 );
 
+
+
 //@ts-ignore
 const Slider = (props) => {
 	return (
