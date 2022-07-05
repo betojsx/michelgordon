@@ -4,14 +4,11 @@ import {
 	Box,
 	Flex,
 	Heading,
-	Text,
-	Stack,
 	Button,
 	Modal,
 	ModalOverlay,
 	ModalContent,
 	ModalHeader,
-	ModalBody,
 	ModalCloseButton,
 	useDisclosure,
 	useBreakpointValue,
@@ -33,16 +30,7 @@ const Hero = ({ title, image }: { title: string; image: any }) => (
 		bgSize="cover"
 		bgPos="center"
 	>
-		<Heading
-			size="4xl"
-			maxW="container.md"
-			mb="3"
-			color="transparent"
-			bgImage="inherit"
-			bgClip="text"
-			mixBlendMode="screen"
-			textShadow="xl"
-		>
+		<Heading size="4xl" maxW="container.md" mb="3" color="white" textShadow="2px 2px rgba(0,0,0,0.45)">
 			{title}
 		</Heading>
 	</Flex>

@@ -46,80 +46,66 @@ const TextTagSection = () => (
 				Espaço colaborativo para os admiradores <br />
 				do Oriente Médio
 			</Text>
-			<Flex wrap="wrap" maxW="xl" mx="auto" justify="center" mt="4">
-				<Tag m="2" size="lg" borderRadius="full" variant="outline" colorScheme="blackAlpha">
-					<TagLabel>Long Tail Tag</TagLabel>
-				</Tag>
-				<Tag m="2" size="lg" borderRadius="full" variant="outline" colorScheme="blackAlpha">
-					<TagLabel>Simple Tag</TagLabel>
-				</Tag>
-				<Tag m="2" size="lg" borderRadius="full" variant="outline" colorScheme="blackAlpha">
-					<TagLabel>Simple Tag</TagLabel>
-				</Tag>
-				<Tag m="2" size="lg" borderRadius="full" variant="outline" colorScheme="blackAlpha">
-					<TagLabel>One More Tag</TagLabel>
-				</Tag>
-				<Tag m="2" size="lg" borderRadius="full" variant="outline" colorScheme="blackAlpha">
-					<TagLabel>Lorem Ipsum Dot</TagLabel>
-				</Tag>
-				<Tag m="2" size="lg" borderRadius="full" variant="outline" colorScheme="blackAlpha">
-					<TagLabel>Amet Zerat</TagLabel>
-				</Tag>
-			</Flex>
 		</Container>
 	</Box>
 );
 
 //@ts-ignore
-const BlockAnchor = ({ title, image, ...props }) => (
-	<Flex
-		align="center"
-		justify="center"
-		pos="relative"
-		w={{ base: '100%', sm: '380px', lg: '574px' }}
-		h={{ base: '380px', lg: '574px' }}
+const BlockAnchor = ({ title, image, href, ...props }) => (
+	<NxCkLink
+		href={href}
 		_hover={{
+			textDecoration: 'none',
 			'& img': {
 				transform: 'scale(1.1) rotate(2deg)',
 			},
 		}}
-		sx={{
-			'& img ': {
-				transition: 'all 420ms ease',
-			},
-		}}
-		{...props}
+		display="block"
 	>
-		<Box maxW="240px" pos="relative" zIndex="1">
-			<Text fontSize="4xl" fontWeight="bold" lineHeight="10" color="white" textAlign="center">
-				{title}
-			</Text>
-		</Box>
-		<Box
-			pos="absolute"
-			left="0"
-			right="0"
-			top="0"
-			bottom="0"
-			_hover={{
-				_after: {
-					bg: 'mg.secondaryAlpha60',
+		<Flex
+			align="center"
+			justify="center"
+			pos="relative"
+			w={{ base: '100%', sm: '380px', lg: '574px' }}
+			h={{ base: '380px', lg: '574px' }}
+			sx={{
+				'& img ': {
+					transition: 'all 420ms ease',
 				},
 			}}
-			_after={{
-				content: '""',
-				position: 'absolute',
-				top: '0',
-				right: '0',
-				bottom: '0',
-				left: '0',
-				bg: 'mg.primaryAlpha60',
-				transition: 'all 420ms ease',
-			}}
+			{...props}
 		>
-			<Image src={image} layout="fill" />
-		</Box>
-	</Flex>
+			<Box maxW="240px" pos="relative" zIndex="1">
+				<Text fontSize="4xl" fontWeight="bold" lineHeight="10" color="white" textAlign="center">
+					{title}
+				</Text>
+			</Box>
+			<Box
+				pos="absolute"
+				left="0"
+				right="0"
+				top="0"
+				bottom="0"
+				_hover={{
+					_after: {
+						bg: 'mg.secondaryAlpha60',
+					},
+				}}
+				_after={{
+					content: '""',
+					position: 'absolute',
+					top: '0',
+					right: '0',
+					bottom: '0',
+					left: '0',
+					bg: 'mg.primaryAlpha60',
+					transition: 'all 420ms ease',
+				}}
+			>
+				<Image src={image} layout="fill" />
+			</Box>
+		</Flex>
+	</NxCkLink>
 );
 
 const PhotoSection = () => (
@@ -137,9 +123,9 @@ const PhotoSection = () => (
 			bg="mg.primaryAlpha60"
 		>
 			<Heading as="h3" size="2xl" mb="4" color="white">
-				Lorem Ipsum Dot Color Amet
+				Fotografias para decorar seu ambiente
 			</Heading>
-			<NxCkLink href="#">Ver Mais &rarr;</NxCkLink>
+			<NxCkLink href="/works/photography">Ver Mais &rarr;</NxCkLink>
 		</Box>
 		<Box
 			pos="absolute"
@@ -147,7 +133,7 @@ const PhotoSection = () => (
 			right="0"
 			left="0"
 			bottom="0"
-			bgImage="url('/photo_section_mock.png')"
+			bgImage="url('/photo_section_mock.jpg')"
 			bgSize="cover"
 			bgAttachment="fixed"
 			bgRepeat="no-repeat"
@@ -177,8 +163,9 @@ const OtherResourcesSection = () => {
 						image="/book_mockup.jpg"
 						mr={{ lg: 4 }}
 						mb={{ base: 4, lg: 0 }}
+						href="/education"
 					/>
-					<BlockAnchor title="Participe das Aulas" image="/classes_mockup.jpg" />
+					<BlockAnchor title="Participe das Aulas" image="/classes_mockup.jpg" href="/education" />
 				</Flex>
 			</Container>
 		</Box>
@@ -191,26 +178,28 @@ const YoutubeSection = () => (
 			<Text fontSize="4xl" fontWeight="bold" lineHeight="10" color="mg.primary" textAlign="center" mb="6">
 				Acompanhe nossos conteúdos no YouTube
 			</Text>
-			<Image src="/youtube_mockup.jpg" width="1080px" height="611px" />
+			<Box as="a" href="https://www.youtube.com/user/michelgordon74" target="_blank">
+				<Image src="/youtube_mockup.jpg" width="1080px" height="611px" />
+			</Box>
 		</Container>
 	</Box>
 );
 
 const INSTAGRAM_SLIDER = [
 	{
-		url: '/instagram_1.jpg',
+		url: '/instagram-1.jpg',
 	},
 	{
-		url: '/instagram_2.jpg',
+		url: '/instagram-2.jpg',
 	},
 	{
-		url: '/instagram_3.jpg',
+		url: '/instagram-3.jpg',
 	},
 	{
-		url: '/instagram_4.jpg',
+		url: '/instagram-4.jpg',
 	},
 	{
-		url: '/instagram_5.jpg',
+		url: '/instagram-5.jpg',
 	},
 ];
 const IGCarouselConfig = {
@@ -258,7 +247,6 @@ export default function Home() {
 				<Slider pos="fixed" top="0" left="0" right="0" maxW="1440px" mx="auto" />
 				<Box pos="relative" zIndex="1">
 					<Menu />
-					<TextTagSection />
 					<PhotoSection />
 					<OtherResourcesSection />
 					<YoutubeSection />

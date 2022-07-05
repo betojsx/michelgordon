@@ -1,28 +1,27 @@
-import { Stack, Image } from '@chakra-ui/react';
-import NxCkLink from './Link';
+import { Stack, Image, Box } from '@chakra-ui/react';
 
 const LinkIcon = ({ url, icon }: any) => (
-	<NxCkLink href={url} w="48px" h="48px">
+	<Box as="a" href={url} w="48px" h="48px" target="_blank" rel="noopener noreferrer">
 		<Image src={icon} />
-	</NxCkLink>
+	</Box>
 );
 
 const socialIcons = [
 	{
 		icon: '/social_youtube.png',
-		url: '#',
+		url: 'https://www.youtube.com/user/michelgordon74',
 	},
 	{
 		icon: '/social_facebook.png',
-		url: '#',
+		url: 'https://www.facebook.com/michelgordon.art',
 	},
 	{
 		icon: '/social_instagram.png',
-		url: '#',
+		url: 'https://www.instagram.com/michelgordon.art/',
 	},
 	{
 		icon: '/social_whatsapp.png',
-		url: '#',
+		url: 'https://wa.me/+352691558163',
 	},
 ];
 

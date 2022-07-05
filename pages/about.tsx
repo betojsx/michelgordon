@@ -89,28 +89,22 @@ const SponsorSection = () => (
 	<Box bg="gray.300" overflowX="hidden">
 		<Container maxW="container.xl">
 			<Flex py="12" wrap={{ base: 'wrap', lg: 'nowrap' }}>
-				<Box d={{ base: 'none', lg: 'block' }} flex="0 0 10%" />
-				<Box color="mg.primary" flex="1 0 50%" mb={{ base: 8, lg: 0 }}>
-					<Heading as="h3" textTransform="uppercase" mb="2">
-						Apoie o Centro
-					</Heading>
-					<Text mb="6" maxW="md" fontSize="lg">
-						Através da sua contribuição nós conseguiremos manter o centro de pé e trazer cada vez mais
-						novidades, conteúdos e melhorias para nossa plataforma.
-					</Text>
-					<Button bg="mg.primary" color="white" size="lg">
-						Quero Contribuir
-					</Button>
-				</Box>
-				<Box color="mg.primary" flex="1 0 50%">
+				<Box color="mg.primary" flex="0 0 auto" mx="auto">
 					<Heading as="h3" textTransform="uppercase" mb="2">
 						Seja um Parceiro
 					</Heading>
-					<Text mb="6" maxW="md" fontSize="lg">
+					<Text mb="6" maxW="xl" fontSize="lg">
 						O Centro Cultural do Oriente Médio é, também, um ambiente coletivo. Você pode expor seu trabalho
 						e produtos aqui na nossa plataforma. Clique no botão abaixo e saiba mais!
 					</Text>
-					<Button bg="mg.primary" color="white" size="lg">
+					<Button
+						bg="mg.primary"
+						color="white"
+						size="lg"
+						as="a"
+						href="https://wa.me/+352691558163"
+						target="_blank"
+					>
 						Quero Contribuir
 					</Button>
 				</Box>

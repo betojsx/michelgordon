@@ -9,6 +9,8 @@ import {
 	Button,
 	Flex,
 	Heading,
+	SimpleGrid,
+	Stack,
 	Text,
 } from '@chakra-ui/react';
 import Menu from '../components/_molecules/Menu';
@@ -43,6 +45,23 @@ const STEPS = [
 	{
 		image: '/htb_icon_step3.png',
 		text: 'Agora é só aguardar a sua obra chegar no seu endereço. Assim que chegar, manda uma fotinha do ambiente com ela para vermos!',
+	},
+];
+
+const BOOKS = [
+	{
+		id: 1,
+		img: '/book-um-judeu-no-isla.jpg',
+		title: 'Um Judeu no Islã',
+		author: 'Michel Gordon',
+		url: 'https://www.amazon.com.br/Um-Judeu-Isl%C3%A3-Michel-Gordon/dp/8579030056',
+	},
+	{
+		id: 2,
+		img: '/book-my-tehran.jpg',
+		title: 'My Tehran, Your Tehran',
+		author: 'Michel Gordon',
+		url: '#',
 	},
 ];
 
@@ -139,8 +158,27 @@ export default function Education() {
 							/>
 						</AccordionButton>
 						<AccordionPanel pb={4} bg="white" p={{ lg: 20 }}>
+							<Heading>
+								Nosso cronograma de aulas é realizado através do nosso grupo no WhatsApp. Clique no
+								botão e faça parte da nossa turma
+							</Heading>
+							<Button
+								bg="mg.primary"
+								color="white"
+								size="lg"
+								type="submit"
+								as="a"
+								href="https://wa.me/+352691558163"
+								target="_blank"
+								margin="20px auto 60px"
+								display="inline-flex"
+							>
+								QUERO ENTRAR NO GRUPO DAS AULAS
+							</Button>
 							<Media greaterThan="lg">
-								<Image src="/education_mockup2.png" width="1292" height="693" layout="responsive" />
+								<Box as="a" href="https://www.youtube.com/user/michelgordon74" target="_blank">
+									<Image src="/youtube_canal.jpg" width="1292" height="344" layout="responsive" />
+								</Box>
 							</Media>
 						</AccordionPanel>
 					</AccordionItem>
@@ -154,11 +192,27 @@ export default function Education() {
 								image="/books_big_mockup.jpg"
 							/>
 						</AccordionButton>
-						<AccordionPanel pb={4}>
-							<Text>
-								Nosso cronograma e aviso de aulas é realizado através do nosso grupo no WhatsApp. Clique
-								no botão abaixo e faça parte da nossa turma!
-							</Text>
+						<AccordionPanel bg="white" p={{ lg: 20 }}>
+							<SimpleGrid columns={3} spacing={4}>
+								{BOOKS.map(({ id, img, url, title, author }) => (
+									<Box
+										key={`book-${id}`}
+										as="a"
+										href={url}
+										target={url.length > 5 ? '_blank' : '_self'}
+									>
+										<Box width={388} height={388} position="relative" mb={2}>
+											<Image src={img} layout="fill" objectFit="cover" />
+										</Box>
+										<Text color="mg.primary" fontSize="2xl" mb={1}>
+											{title}
+										</Text>
+										<Text color="mg.primaryAlpha60" fontSize="xl" mb={1}>
+											{author}
+										</Text>
+									</Box>
+								))}
+							</SimpleGrid>
 						</AccordionPanel>
 					</AccordionItem>
 				</Accordion>

@@ -2,7 +2,6 @@ import React from 'react';
 import { Box, Container, Flex, Text } from '@chakra-ui/react';
 import NxCkLink from '../_atoms/Link';
 import Image from 'next/image';
-import { Media } from '../../media';
 
 export default function Footer() {
 	return (
@@ -11,13 +10,13 @@ export default function Footer() {
 				<Container maxW="container.lg">
 					<Flex align="center" wrap="wrap">
 						<Box mr={{ base: 'auto', lg: 8 }} ml={{ base: 'auto', lg: 0 }}>
-							<Image src="/symbol_alternate.png" width="215px" height="215px"></Image>
+							<Image src="/symbol_alternate.png" width="215px" height="215px" />
 						</Box>
 						<Box mr="10">
-							<NxCkLink href="#" fontSize="lg" mb="4" d="block" color="white">
+							<NxCkLink href="/works" fontSize="lg" mb="4" d="block" color="white">
 								Leve uma obra e decore seu ambiente
 							</NxCkLink>
-							<NxCkLink href="#" fontSize="lg" mb="4" d="block" color="white">
+							<NxCkLink href="/blog" fontSize="lg" mb="4" d="block" color="white">
 								Leia mais sobre o Oriente Médio
 							</NxCkLink>
 							<NxCkLink href="#" fontSize="lg" mb="4" d="block" color="white">
@@ -26,7 +25,7 @@ export default function Footer() {
 						</Box>
 						<Box mr="10">
 							<NxCkLink href="#" fontSize="lg" mb="4" d="block" color="white">
-								Apoie o Centro (doe qualquer valor)
+								Fale Conosco
 							</NxCkLink>
 							<NxCkLink href="#" fontSize="lg" mb="4" d="block" color="white">
 								Anuncie seu produto conosco

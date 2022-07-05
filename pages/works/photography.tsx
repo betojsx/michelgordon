@@ -1,4 +1,4 @@
-import React, { ReactChild, ReactChildren, useEffect, useState } from 'react';
+import React, { FunctionComponent, ReactChild, ReactChildren, useEffect, useMemo, useState } from 'react';
 import { Box, Flex, Heading, Tag, TagLabel, Text, Stack, Icon } from '@chakra-ui/react';
 import Menu from '../../components/_molecules/Menu';
 import Image from 'next/image';
@@ -10,6 +10,17 @@ import NxCkLink from '../../components/_atoms/Link';
 import { FaArrowRight } from 'react-icons/fa';
 import { Media } from '../../media';
 
+interface Collection {
+	id: string;
+	slug: string;
+	title: string;
+	photos: {
+		url: string;
+		width: string;
+		height: string;
+	}[];
+}
+
 const Headline = () => (
 	<Box py="12" minH="380" alignItems="center" justifyContent="center" bg="white" flexWrap="wrap">
 		<Heading size="2xl" color="mg.primary" textAlign="center" mb="8">
@@ -19,39 +30,24 @@ const Headline = () => (
 			Obras de arte feitas com fotografias autorais e exclusivas, impressas em Fine Art com o melhor material do
 			mercado, garantindo durabilidade de mais de 100 anos.
 		</Text>
-		<Flex wrap="wrap" maxW="xl" mx="auto" justify="center" mt="4">
-			<Tag m="2" size="lg" borderRadius="full" variant="outline" colorScheme="blackAlpha">
-				<TagLabel>Long Tail Tag</TagLabel>
-			</Tag>
-			<Tag m="2" size="lg" borderRadius="full" variant="outline" colorScheme="blackAlpha">
-				<TagLabel>Simple Tag</TagLabel>
-			</Tag>
-			<Tag m="2" size="lg" borderRadius="full" variant="outline" colorScheme="blackAlpha">
-				<TagLabel>Simple Tag</TagLabel>
-			</Tag>
-			<Tag m="2" size="lg" borderRadius="full" variant="outline" colorScheme="blackAlpha">
-				<TagLabel>One More Tag</TagLabel>
-			</Tag>
-			<Tag m="2" size="lg" borderRadius="full" variant="outline" colorScheme="blackAlpha">
-				<TagLabel>Lorem Ipsum Dot</TagLabel>
-			</Tag>
-			<Tag m="2" size="lg" borderRadius="full" variant="outline" colorScheme="blackAlpha">
-				<TagLabel>Amet Zerat</TagLabel>
-			</Tag>
-		</Flex>
 	</Box>
 );
 
-const LastCollection = () => (
-	<Box py="8">
-		<Heading as="h3" size="xl" textTransform="uppercase" color="mg.primary" mb="4">
-			Última Coleção
-		</Heading>
-		<Box width="1440" height="440" position="relative">
-			<Image src="/hero.jpg" layout="fill" objectFit="cover" />
+const LastCollection: FunctionComponent<Collection> = ({ slug, photos }) => {
+	const imgSrc = photos?.flat()[0].url;
+	return (
+		<Box py="8">
+			<Heading as="h3" size="xl" textTransform="uppercase" color="mg.primary" mb="4">
+				Última Coleção
+			</Heading>
+			<Box width="1440" height="440" position="relative">
+				<NxCkLink href={`/collection/${slug}`}>
+					{imgSrc && <Image src={imgSrc} layout="fill" objectFit="cover" />}
+				</NxCkLink>
+			</Box>
 		</Box>
-	</Box>
-);
+	);
+};
 
 const Collection = ({ title, slug, photos }: { title: string; slug: string; photos: Array<any> }) => (
 	<Box py="8">
@@ -123,11 +119,15 @@ const Collections = ({ children }: { children: ReactChild }) => (
 	</Box>
 );
 
-export default function Photography({ collections }: { collections: Array<any> }) {
-	const firstThreePhotosFromCollections = collections.map((collection: any) => ({
-		...collection,
-		photos: collection.photos.flat().slice(0, 3),
-	}));
+export default function Photography({ collections }: { collections: Array<Collection> }) {
+	const firstThreePhotosFromCollections = useMemo(() => {
+		return collections.map((collection: any) => ({
+			...collection,
+			photos: collection.photos.flat().slice(0, 3),
+		}));
+	}, [collections]);
+
+	const lastCollection = useMemo(() => collections.flat()[0], [collections]);
 
 	return (
 		<BoxContainer>
@@ -136,7 +136,7 @@ export default function Photography({ collections }: { collections: Array<any> }
 				<Headline />
 				<Collections>
 					<>
-						<LastCollection />
+						<LastCollection {...lastCollection} />
 						<Media greaterThan="lg">
 							{collections.map((collection, index) => (
 								<Collection {...collection} key={index} />
