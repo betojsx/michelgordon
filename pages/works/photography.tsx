@@ -21,6 +21,7 @@ interface Collection {
 	}[];
 }
 
+
 const Headline = () => (
 	<Box py="12" minH="380" alignItems="center" justifyContent="center" bg="white" flexWrap="wrap">
 		<Heading size="2xl" color="mg.primary" textAlign="center" mb="8">
