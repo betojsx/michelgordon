@@ -160,7 +160,7 @@ export async function getStaticProps() {
 	const { collections } = await graphCMS.request(
 		`
 		query Collections{
-			collections(orderBy: createdAt_ASC){
+			collections(orderBy: createdAt_DESC){
 				id
 				slug
 				title
