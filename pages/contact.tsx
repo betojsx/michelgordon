@@ -150,7 +150,15 @@ const Hero = ({ title, description, img }: any) => {
 						placeholder="Sua mensagem"
 					/>
 				</FormControl>
-				<Button bg="mg.primary" color="white" size="lg" type="submit">
+				<Button
+					bg="mg.primary"
+					_hover={{
+						bg: 'mg.secondary',
+					}}
+					color="white"
+					size="lg"
+					type="submit"
+				>
 					Enviar
 				</Button>
 			</Box>

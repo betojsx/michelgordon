@@ -129,7 +129,15 @@ const MobileMenu = () => {
 				/>
 			</Flex>
 			<Modal isOpen={isOpen} onClose={handleClose} size="full" motionPreset="slideInBottom" trapFocus={false}>
-				<ModalContent bgColor="mg.primary" pt="10em">
+				<ModalContent
+					bgColor="mg.primary"
+					pt="10em"
+					sx={{
+						'@supports (min-height: -webkit-fill-available)': {
+							minHeight: '100%',
+						},
+					}}
+				>
 					<ModalCloseButton color="white" size="lg" />
 					<Nav />
 				</ModalContent>

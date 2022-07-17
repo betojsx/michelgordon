@@ -8,31 +8,37 @@ export default function Footer() {
 		<Box>
 			<Box bg="mg.primary" py="12">
 				<Container maxW="container.lg">
-					<Flex align="center" wrap="wrap">
+					<Flex align="flex-start" wrap="wrap">
 						<Box mr={{ base: 'auto', lg: 8 }} ml={{ base: 'auto', lg: 0 }}>
-							<Image src="/symbol_alternate.png" width="215px" height="215px" />
+							<Image src="/symbol-footer.png" width="200px" height="161,5px" />
 						</Box>
-						<Box mr="10">
+						<Box mr="10" mt={4}>
 							<NxCkLink href="/works" fontSize="lg" mb="4" d="block" color="white">
 								Leve uma obra e decore seu ambiente
 							</NxCkLink>
 							<NxCkLink href="/blog" fontSize="lg" mb="4" d="block" color="white">
 								Leia mais sobre o Oriente Médio
 							</NxCkLink>
-							<NxCkLink href="#" fontSize="lg" mb="4" d="block" color="white">
+							<NxCkLink href="/education" fontSize="lg" mb="4" d="block" color="white">
 								Participe da próxima aula
 							</NxCkLink>
 						</Box>
-						<Box mr="10">
-							<NxCkLink href="#" fontSize="lg" mb="4" d="block" color="white">
+						<Box mr="10" mt={4}>
+							<NxCkLink href="/contact" fontSize="lg" mb="4" d="block" color="white">
 								Fale Conosco
 							</NxCkLink>
-							<NxCkLink href="#" fontSize="lg" mb="4" d="block" color="white">
-								Anuncie seu produto conosco
-							</NxCkLink>
-							<NxCkLink href="#" fontSize="lg" mb="4" d="block" color="white">
+
+							<Box
+								as="a"
+								href="https://www.youtube.com/user/michelgordon74"
+								target="_blank"
+								fontSize="lg"
+								mb="4"
+								d="block"
+								color="white"
+							>
 								Se inscreva em nosso canal no YouTube
-							</NxCkLink>
+							</Box>
 						</Box>
 					</Flex>
 				</Container>

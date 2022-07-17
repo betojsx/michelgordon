@@ -99,6 +99,9 @@ const SponsorSection = () => (
 					</Text>
 					<Button
 						bg="mg.primary"
+						_hover={{
+							bg: 'mg.secondary',
+						}}
 						color="white"
 						size="lg"
 						as="a"

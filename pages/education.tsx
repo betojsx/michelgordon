@@ -21,7 +21,7 @@ import { Media } from '../media';
 const Headline = () => (
 	<Flex py="12" minH="380" align="center" justify="center" bg="white">
 		<Heading size="2xl" maxW="container.md" color="mg.primary" textAlign="center">
-			Conheça Nossa Linha de Produtos Para Decoração
+			Participe de aulas educativas sobre o Oriente Médio e conheça novas pessoas para trocar ideia sobre o tema.
 		</Heading>
 	</Flex>
 );
@@ -137,7 +137,7 @@ const Banner = ({ title, text, buttonText, image }: IBannerProps) => (
 				transform: 'translate3d(0, 0, 0)',
 			}}
 		>
-			<Image src={image} layout="fill" />
+			<Image src={image} layout="fill" objectFit="cover" />
 		</Box>
 	</Flex>
 );
@@ -164,13 +164,16 @@ export default function Education() {
 							</Heading>
 							<Button
 								bg="mg.primary"
+								_hover={{
+									bg: 'mg.secondary',
+								}}
 								color="white"
-								size="lg"
+								fontSize={{ base: 'sm', lg: '2xl' }}
 								type="submit"
 								as="a"
 								href="https://wa.me/+352691558163"
 								target="_blank"
-								margin="20px auto 60px"
+								margin={{ base: '20px 0', lg: '20px auto 60px' }}
 								display="inline-flex"
 							>
 								QUERO ENTRAR NO GRUPO DAS AULAS
@@ -193,7 +196,7 @@ export default function Education() {
 							/>
 						</AccordionButton>
 						<AccordionPanel bg="white" p={{ lg: 20 }}>
-							<SimpleGrid columns={3} spacing={4}>
+							<SimpleGrid columns={{ base: 1, lg: 3 }} spacing={4}>
 								{BOOKS.map(({ id, img, url, title, author }) => (
 									<Box
 										key={`book-${id}`}
@@ -201,7 +204,12 @@ export default function Education() {
 										href={url}
 										target={url.length > 5 ? '_blank' : '_self'}
 									>
-										<Box width={388} height={388} position="relative" mb={2}>
+										<Box
+											width={{ base: '100%', lg: 388 }}
+											height={{ base: '300px', lg: 388 }}
+											position="relative"
+											mb={2}
+										>
 											<Image src={img} layout="fill" objectFit="cover" />
 										</Box>
 										<Text color="mg.primary" fontSize="2xl" mb={1}>

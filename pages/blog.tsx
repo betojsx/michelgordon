@@ -120,7 +120,14 @@ const CallToAction = () => (
 		<Heading as="h3" size="xl" textTransform="uppercase" color="mg.primary" mb="4" w="100%" textAlign="center">
 			Compre Agora
 		</Heading>
-		<Button bg="mg.primary" color="white" size="lg">
+		<Button
+			bg="mg.primary"
+			_hover={{
+				bg: 'mg.secondary',
+			}}
+			color="white"
+			size="lg"
+		>
 			Quero Adquirir uma Obra
 		</Button>
 	</Flex>

@@ -24,8 +24,6 @@ const SliderItem = ({ imageSrc }) => (
 	</Box>
 );
 
-
-
 //@ts-ignore
 const Slider = (props) => {
 	return (
@@ -63,19 +61,20 @@ const BlockAnchor = ({ title, image, href, ...props }) => (
 			},
 		}}
 		display="block"
+		w={{ base: '100%', sm: '380px', lg: '574px' }}
+		h={{ base: '380px', lg: '574px' }}
+		{...props}
 	>
 		<Flex
 			align="center"
 			justify="center"
 			pos="relative"
-			w={{ base: '100%', sm: '380px', lg: '574px' }}
-			h={{ base: '380px', lg: '574px' }}
+			h="100%"
 			sx={{
 				'& img ': {
 					transition: 'all 420ms ease',
 				},
 			}}
-			{...props}
 		>
 			<Box maxW="240px" pos="relative" zIndex="1">
 				<Text fontSize="4xl" fontWeight="bold" lineHeight="10" color="white" textAlign="center">
@@ -111,7 +110,7 @@ const BlockAnchor = ({ title, image, href, ...props }) => (
 );
 
 const PhotoSection = () => (
-	<Box h="590px" pos="relative">
+	<Box h={{ base: 360, lg: '590px' }} pos="relative">
 		<Box
 			d="flex"
 			flexWrap="wrap"
@@ -120,14 +119,16 @@ const PhotoSection = () => (
 			px="4%"
 			pos="relative"
 			zIndex="1"
-			maxW={{ base: '60%', lg: '40%' }}
+			maxW={{ base: '80%', lg: '40%' }}
 			h="100%"
 			bg="mg.primaryAlpha60"
 		>
-			<Heading as="h3" size="2xl" mb="4" color="white">
+			<Heading as="h3" fontSize={{ base: 'x-large', lg: 'xxx-large' }} mb="4" color="white" width="100%">
 				Fotografias para decorar seu ambiente
 			</Heading>
-			<NxCkLink href="/works/photography">Ver Mais &rarr;</NxCkLink>
+			<NxCkLink href="/works/photography" color="white">
+				Ver Coleções &rarr;
+			</NxCkLink>
 		</Box>
 		<Box
 			pos="absolute"
@@ -135,7 +136,7 @@ const PhotoSection = () => (
 			right="0"
 			left="0"
 			bottom="0"
-			bgImage="url('/photo_section_mock.jpg')"
+			bgImage="url('/mockup-home.png')"
 			bgSize="cover"
 			bgAttachment="fixed"
 			bgRepeat="no-repeat"

@@ -107,7 +107,14 @@ const HowToBuy = () => (
 				</Box>
 			))}
 		</Flex>
-		<Button bg="mg.primary" color="white" size="lg">
+		<Button
+			bg="mg.primary"
+			_hover={{
+				bg: 'mg.secondary',
+			}}
+			color="white"
+			size="lg"
+		>
 			Quero Adquirir uma Obra
 		</Button>
 	</Flex>
