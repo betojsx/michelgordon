@@ -105,7 +105,7 @@ const SponsorSection = () => (
 						color="white"
 						size="lg"
 						as="a"
-						href="https://wa.me/+352691558163"
+						href="https://wa.me/+5511950202215"
 						target="_blank"
 					>
 						Quero Contribuir

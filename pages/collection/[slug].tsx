@@ -99,6 +99,9 @@ const CallToAction = () => (
 			}}
 			color="white"
 			size="lg"
+			as="a"
+			href="https://wa.me/+5511950202215"
+			target="_blank"
 		>
 			Quero Adquirir uma Obra
 		</Button>

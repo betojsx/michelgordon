@@ -5,14 +5,7 @@ import Menu from '../components/_molecules/Menu';
 import Footer from '../components/_molecules/Footer';
 import NxCkLink from '../components/_atoms/Link';
 import BoxContainer from '../components/_atoms/BoxContainer';
-const Headline = () => (
-	<Flex py="12" minH="380" align="center" justify="center" bg="white">
-		<Heading size="2xl" maxW="container.md" color="mg.primary" textAlign="center">
-			Conheça Nossa Linha de Produtos Para Decoração
-		</Heading>
-	</Flex>
-);
-
+import { Headline } from '../components/_atoms/Headline';
 interface IBannerProps {
 	title: string;
 	text: string;
@@ -114,6 +107,9 @@ const HowToBuy = () => (
 			}}
 			color="white"
 			size="lg"
+			as="a"
+			href="https://wa.me/+5511950202215"
+			target="_blank"
 		>
 			Quero Adquirir uma Obra
 		</Button>
@@ -125,7 +121,7 @@ export default function Works() {
 		<BoxContainer>
 			<Box>
 				<Menu />
-				<Headline />
+				<Headline>Conheça Nossa Linha de Produtos Para Decoração</Headline>
 				<Banner
 					title="Fotografia"
 					text="Verdadeiras obras de arte que vão iluminar o seu espaço"

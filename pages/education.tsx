@@ -18,13 +18,8 @@ import Footer from '../components/_molecules/Footer';
 import NxCkLink from '../components/_atoms/Link';
 import BoxContainer from '../components/_atoms/BoxContainer';
 import { Media } from '../media';
-const Headline = () => (
-	<Flex py="12" minH="380" align="center" justify="center" bg="white">
-		<Heading size="2xl" maxW="container.md" color="mg.primary" textAlign="center">
-			Participe de aulas educativas sobre o Oriente Médio e conheça novas pessoas para trocar ideia sobre o tema.
-		</Heading>
-	</Flex>
-);
+import { Headline } from '../components/_atoms/Headline';
+import { Title } from '../components/_atoms/Title';
 
 interface IBannerProps {
 	title: string;
@@ -146,7 +141,10 @@ export default function Education() {
 		<BoxContainer>
 			<Box>
 				<Menu />
-				<Headline />
+				<Headline>
+					Participe de aulas educativas sobre o Oriente Médio e conheça novas pessoas para trocar ideia sobre
+					o tema.
+				</Headline>
 				<Accordion>
 					<AccordionItem border="0">
 						<AccordionButton padding="0">
@@ -158,10 +156,10 @@ export default function Education() {
 							/>
 						</AccordionButton>
 						<AccordionPanel pb={4} bg="white" p={{ lg: 20 }}>
-							<Heading>
+							<Title color="mg.primary" fontSize={{ base: 'xl', md: '3xl' }} textAlign="left">
 								Nosso cronograma de aulas é realizado através do nosso grupo no WhatsApp. Clique no
 								botão e faça parte da nossa turma
-							</Heading>
+							</Title>
 							<Button
 								bg="mg.primary"
 								_hover={{
@@ -171,13 +169,15 @@ export default function Education() {
 								fontSize={{ base: 'sm', lg: '2xl' }}
 								type="submit"
 								as="a"
-								href="https://wa.me/+352691558163"
+								href="https://wa.me/+5511950202215"
 								target="_blank"
-								margin={{ base: '20px 0', lg: '20px auto 60px' }}
+								margin={{ base: '20px auto', lg: '20px auto 60px' }}
 								display="inline-flex"
+								size="lg"
 							>
 								QUERO ENTRAR NO GRUPO DAS AULAS
 							</Button>
+
 							<Media greaterThan="lg">
 								<Box as="a" href="https://www.youtube.com/user/michelgordon74" target="_blank">
 									<Image src="/youtube_canal.jpg" width="1292" height="344" layout="responsive" />

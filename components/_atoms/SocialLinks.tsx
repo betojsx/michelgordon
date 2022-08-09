@@ -21,7 +21,7 @@ const socialIcons = [
 	},
 	{
 		icon: '/social_whatsapp.png',
-		url: 'https://wa.me/+352691558163',
+		url: 'https://wa.me/+5511950202215',
 	},
 ];
 

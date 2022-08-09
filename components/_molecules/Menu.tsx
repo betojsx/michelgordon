@@ -119,7 +119,9 @@ const MobileMenu = () => {
 	return (
 		<>
 			<Flex p="4" bg="mg.primary" alignItems="center" justifyContent="space-between">
-				<Image src="/logo_symbol.png" width="45" height="36" />
+				<NxCkLink href="/" cursor="pointer">
+					<Image src="/logo_symbol.png" width="45" height="36" />
+				</NxCkLink>
 				<IconButton
 					onClick={handleOpen}
 					aria-label="Open menu"
